@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
-import profile from '../assets/profile.jpg';
+import newprofile from '../assets/newprofile.jpg';
 import {
   FaGithub,
   FaLinkedin,
@@ -87,7 +87,7 @@ const Home = () => {
         <div className="flex-1 flex justify-center">
           <div className="bg-gradient-to-br from-cyan-500 to-blue-600 p-[5px] rounded-xl shadow-lg hover:shadow-cyan-400/40 transition">
             <img
-              src={profile}
+              src={newprofile}
               alt="Profile"
               className="w-72 h-72 sm:w-80 sm:h-80 object-cover rounded-lg border-4 border-[#1e293b]"
             />
