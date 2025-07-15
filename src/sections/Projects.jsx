@@ -118,9 +118,9 @@
 // export default Projects;
 
 import React from 'react';
-import project1 from '../assets/project1.JPEG';
-import project2 from '../assets/project2.JPEG';
-import project3 from '../assets/project3.JPEG';
+import project1 from '../assets/project1.jpeg';
+import project2 from '../assets/project2.jpeg';
+import project3 from '../assets/project3.jpeg';
 
 
 const projects = [
