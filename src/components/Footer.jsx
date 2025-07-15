@@ -96,7 +96,7 @@ const Footer = () => {
 
       {/* Bottom */}
       <div className="border-t border-slate-700 mt-10 pt-4 text-center text-sm text-slate-500">
-        © {new Date().getFullYear()} Akshat Saini. Made with ❤️ in India.
+        © {new Date().getFullYear()} <span className="text-white font-semibold">Akshat Saini</span>. All rights reserved.
         <ScrollLink
           to="home"
           smooth={true}

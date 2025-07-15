@@ -118,41 +118,44 @@
 // export default Projects;
 
 import React from 'react';
-import project1 from '../assets/project1.png';
-import project2 from '../assets/project2.png';
+import project1 from '../assets/project1.JPEG';
+import project2 from '../assets/project2.JPEG';
+import project3 from '../assets/project3.JPEG';
+
 
 const projects = [
-  {
-    title: 'Tic Tac Toe Game',
-    description: 'A simple and interactive tic tac toe game built using vanilla web tech.',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    github: 'https://github.com/Akshatsainiaks/TicTacToe',
-    live: 'https://tic-tac-toe-akshat-project.vercel.app/',
-    image: project1,
-  },
   {
     title: 'Portfolio Website',
     description: 'Responsive developer portfolio with animations, project showcase, contact form, and smooth scroll navigation.',
     tech: ['React', 'Tailwind', 'AOS'],
-    github: 'https://github.com/yourusername/portfolio',
-    live: 'https://yourportfolio.netlify.app',
+    github: 'https://github.com/Akshatsainiaks/AiProject',
+    live: 'https://ai-project-brown-gamma.vercel.app/',
+    image: project3,
+  },
+  // {
+  //   title: 'Todo App with Auth',
+  //   description: 'Todo app with user authentication, JWT, and MongoDB backend. Includes dark mode and filters.',
+  //   tech: ['React', 'Express', 'MongoDB', 'JWT'],
+  //   github: 'https://github.com/yourusername/todo-auth-app',
+  //   live: 'https://yourtodoapp.netlify.app',
+  //   image: project2,
+  // },
+  {
+    title: 'Weather App',
+    description: 'A responsive weather application built with React, Tailwind CSS, and OpenWeatherMap API, providing real-time forecasts with a clean UI.',
+    tech: ['React', 'Vite', 'TailwindCSS'],
+    github: 'https://github.com/Akshatsainiaks/WeatherApp',
+    live: 'https://weather-app-akshat-project.vercel.app/',
     image: project2,
   },
-  {
-    title: 'Todo App with Auth',
-    description: 'Todo app with user authentication, JWT, and MongoDB backend. Includes dark mode and filters.',
-    tech: ['React', 'Express', 'MongoDB', 'JWT'],
-    github: 'https://github.com/yourusername/todo-auth-app',
-    live: 'https://yourtodoapp.netlify.app',
-    image: project2,
-  },
-  {
-    title: 'Todo App with Auth',
-    description: 'Todo app with user authentication, JWT, and MongoDB backend. Includes dark mode and filters.',
-    tech: ['React', 'Express', 'MongoDB', 'JWT'],
-    github: 'https://github.com/yourusername/todo-auth-app',
-    live: 'https://yourtodoapp.netlify.app',
-    image: project2,
+
+   {
+    title: 'Tic Tac Toe Game',
+    description: 'A simple and interactive tic tac toe game built using HTML/CSS Javascript web tech.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/Akshatsainiaks/TicTacToe',
+    live: 'https://tic-tac-toe-akshat-project.vercel.app/',
+    image: project1,
   },
 ];
 
