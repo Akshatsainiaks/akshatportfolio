@@ -1,4 +1,4 @@
-// Update in profile image
+
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import newprofile from '../assets/newprofile.jpg';
@@ -16,14 +16,14 @@ const Home = () => {
       id="home"
       className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white"
     >
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-16 max-w-7xl w-full">
-        {/* Text */}
-        <div className="text-center md:text-left flex-1">
+      <div className="flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 max-w-7xl w-full">
+        {/* Text Section */}
+        <div className="flex-1 text-center md:text-left">
           <span className="inline-block text-sm text-cyan-400 bg-cyan-900/20 px-4 py-1 rounded-full mb-4 tracking-wide">
             🚀 Open to Opportunities
           </span>
 
-          <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 leading-tight">
             Hi, I’m <span className="text-cyan-400">Akshat Saini</span>
           </h1>
 
@@ -82,13 +82,13 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Image */}
-        <div className="flex-1 flex justify-center">
+        {/* Image Section */}
+        <div className="flex-1 flex justify-center mb-10 md:mb-0">
           <div className="bg-gradient-to-br from-cyan-500 to-blue-600 p-[5px] rounded-xl shadow-lg hover:shadow-cyan-400/40 transition">
             <img
               src={newprofile}
               alt="Profile"
-              className="w-72 h-72 sm:w-80 sm:h-80 object-cover rounded-lg border-4 border-[#1e293b]"
+              className="w-64 h-64 sm:w-72 sm:h-72 object-cover rounded-lg border-4 border-[#1e293b]"
             />
           </div>
         </div>
@@ -96,7 +96,10 @@ const Home = () => {
 
       {/* Scroll Down Arrow */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        <a href="#about" className="text-cyan-400 animate-bounce text-lg hover:text-white transition">
+        <a
+          href="#about"
+          className="text-cyan-400 animate-bounce text-lg hover:text-white transition"
+        >
           <FaChevronDown size={24} />
         </a>
       </div>
