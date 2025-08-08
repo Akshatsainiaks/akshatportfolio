@@ -125,9 +125,9 @@ import project3 from '../assets/project3.jpeg';
 
 const projects = [
   {
-    title: 'Portfolio Website',
-    description: 'Responsive developer portfolio with animations, project showcase, contact form, and smooth scroll navigation.',
-    tech: ['React', 'Tailwind', 'AOS'],
+    title: 'AI SaaS Web App – Full Stack PERN Project',
+    description: 'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
+    tech: ['React.js', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
     github: 'https://github.com/Akshatsainiaks/AiProject',
     live: 'https://ai-project-brown-gamma.vercel.app/',
     image: project3,
