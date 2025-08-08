@@ -57,7 +57,7 @@ const Home = () => {
               Let’s Connect
             </a>
             <a
-              href="/upResume.pdf"
+              href="/AkshatResume.pdf"
               download
               className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-md font-medium hover:bg-cyan-500/10 transition"
             >
