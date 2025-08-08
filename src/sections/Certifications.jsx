@@ -123,6 +123,13 @@
 import React from 'react';
 
 const certifications = [
+   {
+    title: 'Red Hat Certified System Administrator',
+    platform: 'Redhat',
+    date: 'Feb 2024',
+    img: '/Redhat.jpeg',
+    link: '/Redhat.pdf',
+  },
   {
     title: 'Foundations of Cybersecurity',
     platform: 'Google • Coursera',
