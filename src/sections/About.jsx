@@ -116,7 +116,7 @@ const About = () => {
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed mb-6">
-            I’m <span className="font-semibold text-white">Akshat Saini</span>, a developer driven by curiosity and powered by coffee ☕. I build full stack applications with a love for clean code, great UX, and solving real problems.
+            I’m <span className="font-semibold text-white">Akshat Saini</span>, a developer who builds full-stack applications with a strong focus on clean code, intuitive user experiences, and solving real-world problems.
           </p>
 
           {/* Highlights like a dev journey */}
@@ -130,7 +130,8 @@ const About = () => {
             <div className="flex items-start gap-3">
               <span className="text-yellow-400 text-xl">🏆</span>
               <p className="text-slate-300 text-base">
-                Participated in <strong>hackathons</strong> & contributed to <strong>open-source</strong> projects.
+                Participated in <strong>hackathons</strong>
+                 {/* & contributed to <strong>open-source</strong>projects. */}
               </p>
             </div>
             <div className="flex items-start gap-3">

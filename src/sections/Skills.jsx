@@ -29,6 +29,7 @@ const skills = [
       { name: 'Express.js', icon: <SiExpress className="text-white" /> },
       { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
       { name: 'JWT', icon: <SiJsonwebtokens className="text-red-400" /> },
+      { name: 'MYSQL'},
       { name: 'REST APIs', icon: <SiPostman className="text-orange-400" /> },
     ],
   },
@@ -43,6 +44,8 @@ const skills = [
       { name: 'Vite', icon: <SiVite className="text-purple-400" /> },
     ],
   },
+
+  
 ];
 
 const Skills = () => {
