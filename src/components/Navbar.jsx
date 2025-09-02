@@ -71,7 +71,7 @@ const Navbar = () => {
 
             {/* Resume Button */}
             <a
-              href="/AkshatResume.pdf"
+              href="/Akshat_Saini_Resume.pdf"
               download
               className="ml-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md text-sm shadow hover:scale-105 transition"
             >
@@ -107,7 +107,7 @@ const Navbar = () => {
             ))}
 
             <a
-              href="/upResume.pdf"
+              href="/Akshat_Saini_Resume.pdf"
               download
               className="inline-block mt-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-2 px-4 rounded-md shadow hover:scale-105 transition"
             >

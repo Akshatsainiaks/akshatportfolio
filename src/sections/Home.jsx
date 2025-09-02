@@ -6,7 +6,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaTwitter,
-  FaCode,
+  // FaCode,
   FaChevronDown,
 } from 'react-icons/fa';
 
@@ -57,7 +57,7 @@ const Home = () => {
               Let’s Connect
             </a>
             <a
-              href="/AkshatResume.pdf"
+              href="/Akshat_Saini_Resume.pdf"
               download
               className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-md font-medium hover:bg-cyan-500/10 transition"
             >
@@ -67,18 +67,18 @@ const Home = () => {
 
           {/* Social Icons */}
           <div className="flex gap-5 justify-center md:justify-start text-xl">
-            <a href="#" className="text-cyan-400 hover:text-white transition">
+            <a href="https://github.com/Akshatsainiaks" className="text-cyan-400 hover:text-white transition">
               <FaGithub />
             </a>
-            <a href="#" className="text-cyan-400 hover:text-white transition">
+            <a href="https://www.linkedin.com/in/akshat-saini-0ba25924b/" className="text-cyan-400 hover:text-white transition">
               <FaLinkedin />
             </a>
-            <a href="#" className="text-cyan-400 hover:text-white transition">
+            {/* <a href="#" className="text-cyan-400 hover:text-white transition">
               <FaTwitter />
-            </a>
-            <a href="#" className="text-cyan-400 hover:text-white transition">
+            </a> */}
+            {/* <a href="#" className="text-cyan-400 hover:text-white transition">
               <FaCode />
-            </a>
+            </a> */}
           </div>
         </div>
 

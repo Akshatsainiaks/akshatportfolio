@@ -147,7 +147,7 @@ const About = () => {
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               {[
                 'React.js',
-                'Next.js',
+                // 'Next.js',
                 'Node.js',
                 'MongoDB',
                 'Tailwind CSS',
