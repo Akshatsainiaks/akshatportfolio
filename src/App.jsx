@@ -47,7 +47,7 @@ import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-
+import Experience from "./sections/Experience";
 function App() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -59,6 +59,7 @@ function App() {
       <Home />
       <About />
       <Skills />
+      <Experience />
       <Projects />
       <Certifications />
       <Contact />

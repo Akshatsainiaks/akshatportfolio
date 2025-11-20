@@ -119,7 +119,7 @@ const About = () => {
             I’m <span className="font-semibold text-white">Akshat Saini</span>, a developer who builds full-stack applications with a strong focus on clean code, intuitive user experiences, and solving real-world problems.
           </p>
 
-          {/* Highlights like a dev journey */}
+     
           <div className="space-y-4 mb-6">
             <div className="flex items-start gap-3">
               <span className="text-cyan-400 text-xl">💻</span>
@@ -142,7 +142,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Tech Stack Pills */}
+         
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-cyan-400 mb-3">Tech I Love:</h3>
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
