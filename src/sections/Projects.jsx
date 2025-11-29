@@ -579,6 +579,163 @@
 // export default Projects;
 
 
+// import React from 'react';
+// import project1 from '../assets/project1.jpeg';
+// import project2 from '../assets/project2.jpeg';
+// import project3 from '../assets/project3.jpeg';
+
+// const projects = [
+//   {
+//     title: 'AI SaaS Web App – Full Stack PERN Project',
+//     description:
+//       'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
+//     tech: ['React.js', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+//     github: 'https://github.com/Akshatsainiaks/AiProject',
+//     live: 'https://ai-project-brown-gamma.vercel.app/',
+//     image: project3,
+//   },
+
+//   {
+//     title: 'Weather App',
+//     description:
+//       'A responsive weather application built with React, Tailwind CSS, and OpenWeatherMap API, providing real-time forecasts.',
+//     tech: ['React', 'Vite', 'TailwindCSS'],
+//     github: 'https://github.com/Akshatsainiaks/WeatherApp',
+//     live: 'https://weather-app-akshat-project.vercel.app/',
+//     image: project2,
+//   },
+
+//   {
+//     title: 'Tic Tac Toe Game',
+//     description:
+//       'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
+//     tech: ['HTML', 'CSS', 'JavaScript'],
+//     github: 'https://github.com/Akshatsainiaks/TicTacToe',
+//     live: 'https://tic-tac-toe-akshat-project.vercel.app/',
+//     image: project1,
+//   },
+// ];
+
+// const Projects = () => {
+//   return (
+//     <section
+//       id="projects"
+//       className="
+//         relative
+//         overflow-x-hidden
+//         bg-gradient-to-br 
+//         from-[#0f172a] via-[#1e293b] to-[#0f172a]
+//         text-white
+//         px-6
+//         py-24
+//         flex 
+//         flex-col 
+//         items-center
+//       "
+//     >
+//       {/* Heading */}
+//       <div
+//         className="max-w-6xl w-full mx-auto text-center mb-16"
+//         data-aos="fade-up"
+//       >
+//         <h2 className="text-4xl md:text-5xl font-bold mb-4">
+//           My Projects <span className="text-cyan-400">💡</span>
+//         </h2>
+//         <p className="text-slate-300 text-lg">
+//           Some of the things I've built recently.
+//         </p>
+//       </div>
+
+//       {/* Projects Grid */}
+//       <div
+//         className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl"
+//         data-aos="fade-up"
+//       >
+//         {projects.map((project, index) => (
+//           <div
+//             key={index}
+//             className="
+//               bg-[#1e293b]
+//               border border-cyan-500/10 
+//               rounded-xl
+//               shadow-md
+//               hover:shadow-cyan-500/20
+//               hover:-translate-y-1
+//               transition 
+//               duration-300
+//               overflow-hidden
+//             "
+//             data-aos="zoom-in"
+//             data-aos-delay={index * 100}
+//           >
+//             <img
+//               src={project.image}
+//               alt={project.title}
+//               className="w-full h-44 sm:h-48 object-cover rounded-t-xl"
+//             />
+
+//             <div className="p-6">
+//               <h3 className="text-xl font-semibold text-white mb-2">
+//                 {project.title}
+//               </h3>
+
+//               <p className="text-slate-400 text-sm mb-4">
+//                 {project.description}
+//               </p>
+
+//               <div className="flex flex-wrap gap-2 mb-6">
+//                 {project.tech.map((tech) => (
+//                   <span
+//                     key={tech}
+//                     className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
+//                   >
+//                     {tech}
+//                   </span>
+//                 ))}
+//               </div>
+
+//               <div className="flex justify-between items-center text-sm">
+//                 <a
+//                   href={project.live}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-cyan-400 font-medium hover:underline"
+//                 >
+//                   🔗 Live Demo
+//                 </a>
+
+//                 <a
+//                   href={project.github}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-slate-300 font-medium hover:underline"
+//                 >
+//                   💻 GitHub
+//                 </a>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* CTA */}
+//       <div className="mt-12 text-center" data-aos="fade-up" data-aos-delay="300">
+//         <a
+//           href="https://github.com/Akshatsainiaks"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white font-medium rounded-md shadow hover:bg-cyan-600 transition"
+//         >
+//           View All Projects on GitHub
+//         </a>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Projects;
+
+
 import React from 'react';
 import project1 from '../assets/project1.jpeg';
 import project2 from '../assets/project2.jpeg';
@@ -594,17 +751,15 @@ const projects = [
     live: 'https://ai-project-brown-gamma.vercel.app/',
     image: project3,
   },
-
   {
     title: 'Weather App',
     description:
-      'A responsive weather application built with React, Tailwind CSS, and OpenWeatherMap API, providing real-time forecasts.',
+      'A responsive weather application built with React, Tailwind CSS and OpenWeatherMap API.',
     tech: ['React', 'Vite', 'TailwindCSS'],
     github: 'https://github.com/Akshatsainiaks/WeatherApp',
     live: 'https://weather-app-akshat-project.vercel.app/',
     image: project2,
   },
-
   {
     title: 'Tic Tac Toe Game',
     description:
@@ -621,23 +776,16 @@ const Projects = () => {
     <section
       id="projects"
       className="
-        relative
-        overflow-x-hidden
+        w-full
         bg-gradient-to-br 
         from-[#0f172a] via-[#1e293b] to-[#0f172a]
-        text-white
-        px-6
-        py-24
-        flex 
-        flex-col 
-        items-center
+        text-white 
+        px-6 
+        py-24 
       "
     >
       {/* Heading */}
-      <div
-        className="max-w-6xl w-full mx-auto text-center mb-16"
-        data-aos="fade-up"
-      >
+      <div className="max-w-6xl mx-auto text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           My Projects <span className="text-cyan-400">💡</span>
         </h2>
@@ -646,36 +794,31 @@ const Projects = () => {
         </p>
       </div>
 
-      {/* Projects Grid */}
-      <div
-        className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl"
-        data-aos="fade-up"
-      >
+      {/* Grid */}
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <div
             key={index}
             className="
-              bg-[#1e293b]
+              bg-[#1e293b] 
               border border-cyan-500/10 
-              rounded-xl
-              shadow-md
-              hover:shadow-cyan-500/20
-              hover:-translate-y-1
+              rounded-xl 
+              shadow-md 
+              hover:shadow-cyan-500/20 
+              hover:-translate-y-1 
               transition 
-              duration-300
+              duration-300 
               overflow-hidden
             "
-            data-aos="zoom-in"
-            data-aos-delay={index * 100}
           >
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-44 sm:h-48 object-cover rounded-t-xl"
+              className="w-full h-44 sm:h-48 object-cover"
             />
 
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold mb-2">
                 {project.title}
               </h3>
 
@@ -719,12 +862,11 @@ const Projects = () => {
       </div>
 
       {/* CTA */}
-      <div className="mt-12 text-center" data-aos="fade-up" data-aos-delay="300">
+      <div className="text-center mt-12">
         <a
           href="https://github.com/Akshatsainiaks"
           target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white font-medium rounded-md shadow hover:bg-cyan-600 transition"
+          className="inline-block px-6 py-3 bg-cyan-500 text-white rounded-md shadow hover:bg-cyan-600 transition"
         >
           View All Projects on GitHub
         </a>
