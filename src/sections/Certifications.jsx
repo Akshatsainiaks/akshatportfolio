@@ -273,10 +273,11 @@ const Certifications = () => {
   return (
     <section
       id="certifications"
-      className="overflow-x-hidden py-24 px-6 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white relative"
+      className="overflow-hidden py-24 px-6 bg-gradient-to-br 
+      from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white"
     >
       {/* HEADER */}
-      <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
+      <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-cyan-400">
           My Certifications 🎓
         </h2>
@@ -286,17 +287,20 @@ const Certifications = () => {
       </div>
 
       {/* SCROLLABLE CARDS */}
-      <div className="overflow-x-auto scrollbar-none relative z-10">
-        <div className="flex space-x-6 px-4 md:px-10 snap-x snap-mandatory scroll-smooth pb-4 w-max">
+      <div className="overflow-x-auto scrollbar-none">
+        <div className="inline-flex space-x-6 px-4 md:px-10 snap-x snap-mandatory scroll-smooth pb-4">
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="snap-center min-w-[280px] sm:min-w-[320px] md:min-w-[360px] bg-[#1e293b] text-white rounded-xl shadow-lg hover:shadow-cyan-500/20 transition-transform hover:-translate-y-1 border border-cyan-500/10"
+              className="snap-center min-w-[260px] sm:min-w-[300px] md:min-w-[340px] 
+              bg-[#1e293b] text-white rounded-xl shadow-lg 
+              hover:shadow-cyan-500/20 transition-transform hover:-translate-y-1 
+              border border-cyan-500/10"
               data-aos="zoom-in"
               data-aos-delay={index * 100}
             >
               {/* IMAGE */}
-              <div className="h-56 bg-[#0f172a] flex items-center justify-center overflow-hidden rounded-t-xl">
+              <div className="h-52 bg-[#0f172a] flex items-center justify-center overflow-hidden rounded-t-xl">
                 <img
                   src={cert.img}
                   alt={cert.title}
@@ -316,7 +320,7 @@ const Certifications = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-cyan-300 hover:underline"
                 >
-                  Click to view certificate
+                  View Certificate
                 </a>
               </div>
             </div>
@@ -328,3 +332,4 @@ const Certifications = () => {
 };
 
 export default Certifications;
+
