@@ -1,22 +1,20 @@
 @import "tailwindcss";
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* FIX: Remove scrolling restrictions */
+/* Allow natural mobile scrolling */
 body {
-  overscroll-behavior-y: auto !important;
-  -webkit-overflow-scrolling: auto !important;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* FIX: Remove touch-action override */
+/* Remove unnecessary force-touch-action */
 html, body {
-  touch-action: pan-y !important;  /* allows normal vertical scroll */
+  touch-action: pan-y;
 }
 
-/* Neon Glow */
 .neon-glow {
   text-shadow: 0 0 8px #22d3ee, 0 0 15px #22d3ee;
 }
