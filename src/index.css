@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
 
+/* html {
+  scroll-behavior: smooth;
+
+} */
+
 html {
   scroll-behavior: auto;
+
 }
 
+
+html, body {
+  overscroll-behavior-y: none !important;
+  touch-action: pan-y !important;
+}

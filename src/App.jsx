@@ -54,7 +54,7 @@ function App() {
   }, []);
 
   return (
-    <div className="font-sans scroll-smooth bg-[var(--bg)] text-[var(--text)] transition-all duration-300">
+    <div className="font-sans scroll-smooth bg-[var(--bg)] text-[var(--text)]">
       <Navbar />
       <Home />
       <About />
