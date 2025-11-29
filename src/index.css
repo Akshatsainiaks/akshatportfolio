@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 
-/* html {
+html {
   scroll-behavior: smooth;
 
-} */
+}
 
-html {
+/* html {
   scroll-behavior: auto;
 
-}
+} */
 
 
 html, body {
