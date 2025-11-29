@@ -594,19 +594,21 @@ const projects = [
     live: 'https://ai-project-brown-gamma.vercel.app/',
     image: project3,
   },
+
   {
     title: 'Weather App',
     description:
-      'A responsive weather application using React, Tailwind CSS & OpenWeatherMap API.',
+      'A responsive weather application built with React, Tailwind CSS, and OpenWeatherMap API, providing real-time forecasts.',
     tech: ['React', 'Vite', 'TailwindCSS'],
     github: 'https://github.com/Akshatsainiaks/WeatherApp',
     live: 'https://weather-app-akshat-project.vercel.app/',
     image: project2,
   },
+
   {
     title: 'Tic Tac Toe Game',
     description:
-      'A simple and interactive tic tac toe game built with HTML, CSS & JavaScript.',
+      'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
     tech: ['HTML', 'CSS', 'JavaScript'],
     github: 'https://github.com/Akshatsainiaks/TicTacToe',
     live: 'https://tic-tac-toe-akshat-project.vercel.app/',
@@ -618,11 +620,24 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative overflow-x-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] 
-                 to-[#0f172a] text-white px-6 py-24 flex flex-col items-center"
+      className="
+        relative
+        overflow-x-hidden
+        bg-gradient-to-br 
+        from-[#0f172a] via-[#1e293b] to-[#0f172a]
+        text-white
+        px-6
+        py-24
+        flex 
+        flex-col 
+        items-center
+      "
     >
       {/* Heading */}
-      <div className="max-w-6xl w-full mx-auto text-center mb-16" data-aos="fade-up">
+      <div
+        className="max-w-6xl w-full mx-auto text-center mb-16"
+        data-aos="fade-up"
+      >
         <h2 className="text-4xl md:text-5xl font-bold mb-4">
           My Projects <span className="text-cyan-400">💡</span>
         </h2>
@@ -639,46 +654,51 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-[#1e293b] border border-cyan-500/10 rounded-xl shadow-md 
-                       transition duration-300 overflow-hidden will-change-transform 
-                       transform-gpu"
-            style={{ transform: "translateZ(0)" }}
+            className="
+              bg-[#1e293b]
+              border border-cyan-500/10 
+              rounded-xl
+              shadow-md
+              hover:shadow-cyan-500/20
+              hover:-translate-y-1
+              transition 
+              duration-300
+              overflow-hidden
+            "
+            data-aos="zoom-in"
+            data-aos-delay={index * 100}
           >
-            {/* Image */}
             <img
               src={project.image}
-              loading="lazy"
               alt={project.title}
               className="w-full h-44 sm:h-48 object-cover rounded-t-xl"
-              style={{ willChange: "opacity, transform" }}
             />
 
-            {/* Card Content */}
             <div className="p-6">
               <h3 className="text-xl font-semibold text-white mb-2">
                 {project.title}
               </h3>
 
-              <p className="text-slate-400 text-sm mb-4">{project.description}</p>
+              <p className="text-slate-400 text-sm mb-4">
+                {project.description}
+              </p>
 
-              {/* Tech Pills */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 
-                               px-3 py-1 text-xs rounded-full"
+                    className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              {/* Links */}
               <div className="flex justify-between items-center text-sm">
                 <a
                   href={project.live}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-cyan-400 font-medium hover:underline"
                 >
                   🔗 Live Demo
@@ -687,6 +707,7 @@ const Projects = () => {
                 <a
                   href={project.github}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-300 font-medium hover:underline"
                 >
                   💻 GitHub
@@ -697,15 +718,15 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* View All CTA */}
+      {/* CTA */}
       <div className="mt-12 text-center" data-aos="fade-up" data-aos-delay="300">
         <a
           href="https://github.com/Akshatsainiaks"
           target="_blank"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white 
-                     font-medium rounded-md shadow hover:bg-cyan-600 transition"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-white font-medium rounded-md shadow hover:bg-cyan-600 transition"
         >
-          View All Projects →
+          View All Projects on GitHub
         </a>
       </div>
     </section>
