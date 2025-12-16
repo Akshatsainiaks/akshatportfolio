@@ -479,7 +479,7 @@ const Home = () => {
               <a href="#contact" className="px-6 py-3 bg-cyan-500 text-white rounded-md font-medium shadow hover:scale-105 transition">
                 Let’s Connect
               </a>
-              <a href="/Akshat_Kumar_Saini.pdf" download className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-md font-medium hover:bg-cyan-500/10 transition">
+              <a href="/Akshat_kumar_Saini_Resume.pdf" download className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-md font-medium hover:bg-cyan-500/10 transition">
                 Download Resume
               </a>
             </div>

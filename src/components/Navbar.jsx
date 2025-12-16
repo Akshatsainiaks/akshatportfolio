@@ -323,7 +323,7 @@ const Navbar = () => {
 
             {/* Resume */}
             <a
-              href="/Akshat_Kumar_Saini.pdf"
+              href="/Akshat_kumar_Saini_Resume.pdf"
               download
               className="ml-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md text-sm shadow hover:scale-105 transition"
             >
