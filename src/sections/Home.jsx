@@ -459,7 +459,7 @@ const Home = () => {
                   'Full Stack Developer',
                   'Tech Enthusiast',
                   'Problem Solver',
-                  'Open Source Contributor',
+                  // 'Open Source Contributor',
                 ]}
                 loop
                 cursor
