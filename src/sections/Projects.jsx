@@ -1133,6 +1133,7 @@ import auth3 from '../assets/auth3.png';
 import auth4 from '../assets/auth4.png';
 import auth5 from '../assets/auth5.png';
 import auth6 from '../assets/auth6.png';
+import auth7 from '../assets/auth7.png'
 
 // Currently working project images
 import current1 from '../assets/current1.png';
@@ -1187,7 +1188,7 @@ const projects = [
       'RHEL (VM)',
     ],
     note: 'Runs locally on Red Hat VM (Not Live)',
-    images: [auth1, auth2, auth3, auth5, auth4, auth6],
+    images: [auth1, auth2, auth3, auth5, auth4, auth6, auth7],
   },
   {
     title: 'AI Interview Platform & Question Bank (In Progress)',
