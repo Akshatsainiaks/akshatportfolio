@@ -138,7 +138,7 @@ const skills = [
       { name: 'Git & GitHub', icon: <FaGitAlt className="text-red-400" /> },
       { name: 'VS Code', icon: <FaTerminal className="text-blue-400" /> },
       { name: 'Postman', icon: <SiPostman className="text-orange-400" /> },
-      { name: 'Figma', icon: <FaFigma className="text-pink-400" /> },
+      // { name: 'Figma', icon: <FaFigma className="text-pink-400" /> },
       { name: 'Vite', icon: <SiVite className="text-purple-400" /> },
     ],
   },

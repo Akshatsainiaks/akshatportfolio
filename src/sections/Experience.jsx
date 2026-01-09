@@ -44,7 +44,7 @@ const experiences = [
     company: "Hoicko Technologies Private Limited",
     logo: hoickoLogo,
     Location: "Udaipur, Rajasthan",
-    duration: "Sep 2025 – Nov 2025",
+    duration: "Sep 2025 – Present",
     description:
       "Worked on DevOps tasks including Linux administration, Docker, CI/CD pipelines, automation scripts, and deployment workflows.",
     moreInfo: `

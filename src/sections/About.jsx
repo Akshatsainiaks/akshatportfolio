@@ -215,10 +215,11 @@ const About = () => {
           </h2>
 
           <p className="text-lg text-slate-300 leading-relaxed mb-6">
-            I’m <span className="font-semibold text-white">Akshat Saini</span>, a developer who builds full-stack applications with a strong focus on clean code, intuitive user experiences, and solving real-world problems.
-          </p>
+  I’m <span className="font-semibold text-white">Akshat Saini</span>, a final-year B.Tech student with a strong interest in Full Stack and DevOps. Currently working as a DevOps intern, I focus on building scalable applications and continuously learning to grow into a successful software engineer.
+</p>
 
-          <div className="space-y-4 mb-6">
+
+          {/* <div className="space-y-4 mb-6">
             <div className="flex items-start gap-3">
               <span className="text-cyan-400 text-xl">💻</span>
               <p className="text-slate-300 text-base">
@@ -239,7 +240,39 @@ const About = () => {
                 Passionate about <strong>performance, design systems,</strong> and developer experience.
               </p>
             </div>
-          </div>
+          </div> */}
+
+          <div className="space-y-4 mb-6">
+  <div className="flex items-start gap-3">
+    {/* <span className="text-cyan-400 text-xl">💻</span>
+    <p className="text-slate-300 text-base">
+      Built multiple <strong>full-stack applications</strong> using
+      <span className="text-white font-medium"> React, Node.js, MongoDB</span> and modern UI practices.
+    </p> */}
+  </div>
+
+  <div className="flex items-start gap-3">
+    <span className="text-yellow-400 text-xl">📜</span>
+    <p className="text-slate-300 text-base">
+      <strong>Red Hat Certified System Administrator (RHCSA)</strong> with hands-on experience in Linux system administration.
+    </p>
+  </div>
+
+  <div className="flex items-start gap-3">
+    <span className="text-green-400 text-xl">🚀</span>
+    <p className="text-slate-300 text-base">
+      Interested in <strong>DevOps, automation, containers,</strong> and building scalable, reliable systems.
+    </p>
+  </div>
+
+  <div className="flex items-start gap-3">
+    <span className="text-purple-400 text-xl">🛠️</span>
+    <p className="text-slate-300 text-base">
+      Worked on projects involving <strong>Docker, and full stack</strong>.
+    </p>
+  </div>
+</div>
+
 
           <div className="mt-8">
             <h3 className="text-xl font-semibold text-cyan-400 mb-3">
@@ -254,6 +287,8 @@ const About = () => {
                 'Tailwind CSS',
                 'Express',
                 'Git & GitHub',
+                'Devops',
+                
               ].map((tech) => (
                 <span
                   key={tech}

@@ -736,10 +736,162 @@
 // export default Projects;
 
 
-import React from 'react';
+// import React from 'react';
+// import project1 from '../assets/project1.jpeg';
+// import project2 from '../assets/project2.jpeg';
+// import project3 from '../assets/project3.jpeg';
+
+// const projects = [
+//   {
+//     title: 'AI SaaS Web App – Full Stack PERN Project',
+//     description:
+//       'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
+//     tech: ['React.js', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+//     github: 'https://github.com/Akshatsainiaks/AiProject',
+//     live: 'https://ai-project-brown-gamma.vercel.app/',
+//     image: project3,
+//   },
+//   {
+//     title: 'Weather App',
+//     description:
+//       'A responsive weather application built with React, Tailwind CSS and OpenWeatherMap API.',
+//     tech: ['React', 'Vite', 'TailwindCSS'],
+//     github: 'https://github.com/Akshatsainiaks/WeatherApp',
+//     live: 'https://weather-app-akshat-project.vercel.app/',
+//     image: project2,
+//   },
+//   {
+//     title: 'Tic Tac Toe Game',
+//     description:
+//       'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
+//     tech: ['HTML', 'CSS', 'JavaScript'],
+//     github: 'https://github.com/Akshatsainiaks/TicTacToe',
+//     live: 'https://tic-tac-toe-akshat-project.vercel.app/',
+//     image: project1,
+//   },
+// ];
+
+// const Projects = () => {
+//   return (
+//     <section
+//       id="projects"
+//       className="
+//         w-full
+//         bg-gradient-to-br 
+//         from-[#0f172a] via-[#1e293b] to-[#0f172a]
+//         text-white 
+//         px-6 
+//         py-24 
+//       "
+//     >
+//       {/* Heading */}
+//       <div className="max-w-6xl mx-auto text-center mb-16">
+//         <h2 className="text-4xl md:text-5xl font-bold mb-4">
+//           My Projects <span className="text-cyan-400">💡</span>
+//         </h2>
+//         <p className="text-slate-300 text-lg">
+//           Some of the things I've built recently.
+//         </p>
+//       </div>
+
+//       {/* Grid */}
+//       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+//         {projects.map((project, index) => (
+//           <div
+//             key={index}
+//             className="
+//               bg-[#1e293b] 
+//               border border-cyan-500/10 
+//               rounded-xl 
+//               shadow-md 
+//               hover:shadow-cyan-500/20 
+//               hover:-translate-y-1 
+//               transition 
+//               duration-300 
+//               overflow-hidden
+//             "
+//           >
+//             <img
+//               src={project.image}
+//               alt={project.title}
+//               className="w-full h-44 sm:h-48 object-cover"
+//             />
+
+//             <div className="p-6">
+//               <h3 className="text-xl font-semibold mb-2">
+//                 {project.title}
+//               </h3>
+
+//               <p className="text-slate-400 text-sm mb-4">
+//                 {project.description}
+//               </p>
+
+//               <div className="flex flex-wrap gap-2 mb-6">
+//                 {project.tech.map((tech) => (
+//                   <span
+//                     key={tech}
+//                     className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
+//                   >
+//                     {tech}
+//                   </span>
+//                 ))}
+//               </div>
+
+//               <div className="flex justify-between items-center text-sm">
+//                 <a
+//                   href={project.live}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-cyan-400 font-medium hover:underline"
+//                 >
+//                   🔗 Live Demo
+//                 </a>
+
+//                 <a
+//                   href={project.github}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   className="text-slate-300 font-medium hover:underline"
+//                 >
+//                   💻 GitHub
+//                 </a>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+//       {/* CTA */}
+//       <div className="text-center mt-12">
+//         <a
+//           href="https://github.com/Akshatsainiaks"
+//           target="_blank"
+//           className="inline-block px-6 py-3 bg-cyan-500 text-white rounded-md shadow hover:bg-cyan-600 transition"
+//         >
+//           View All Projects on GitHub
+//         </a>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Projects;
+
+
+import React, { useState } from 'react';
+
+// Existing project images
 import project1 from '../assets/project1.jpeg';
 import project2 from '../assets/project2.jpeg';
 import project3 from '../assets/project3.jpeg';
+
+// Auth system images
+import auth1 from '../assets/auth1.png';
+import auth2 from '../assets/auth2.png';
+import auth3 from '../assets/auth3.png';
+import auth4 from '../assets/auth4.png';
+import auth5 from '../assets/auth5.png';
+import auth6 from '../assets/auth6.png';
 
 const projects = [
   {
@@ -747,7 +899,6 @@ const projects = [
     description:
       'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
     tech: ['React.js', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
-    github: 'https://github.com/Akshatsainiaks/AiProject',
     live: 'https://ai-project-brown-gamma.vercel.app/',
     image: project3,
   },
@@ -756,7 +907,6 @@ const projects = [
     description:
       'A responsive weather application built with React, Tailwind CSS and OpenWeatherMap API.',
     tech: ['React', 'Vite', 'TailwindCSS'],
-    github: 'https://github.com/Akshatsainiaks/WeatherApp',
     live: 'https://weather-app-akshat-project.vercel.app/',
     image: project2,
   },
@@ -765,24 +915,46 @@ const projects = [
     description:
       'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
     tech: ['HTML', 'CSS', 'JavaScript'],
-    github: 'https://github.com/Akshatsainiaks/TicTacToe',
     live: 'https://tic-tac-toe-akshat-project.vercel.app/',
     image: project1,
+  },
+  {
+    title: 'Auth System – Redis & ClickHouse (Docker)',
+    description:
+      'Authentication system built using Node.js with Redis for session management and ClickHouse for high-performance analytics. Fully containerized using Docker Compose and running on a Red Hat Linux VM (VMware).',
+    tech: [
+      'Node.js',
+      'Redis',
+      'ClickHouse',
+      'Docker',
+      'Docker Compose',
+      'RHEL (VM)',
+    ],
+    note: 'Runs locally on Red Hat VM (Not Live)',
+    images: [auth1, auth2, auth3, auth5, auth4, auth6],
   },
 ];
 
 const Projects = () => {
+  const [modalImages, setModalImages] = useState(null);
+  const [modalIndex, setModalIndex] = useState(0);
+
+  const nextImage = () => {
+    setModalIndex((prev) =>
+      prev === modalImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setModalIndex((prev) =>
+      prev === 0 ? modalImages.length - 1 : prev - 1
+    );
+  };
+
   return (
     <section
       id="projects"
-      className="
-        w-full
-        bg-gradient-to-br 
-        from-[#0f172a] via-[#1e293b] to-[#0f172a]
-        text-white 
-        px-6 
-        py-24 
-      "
+      className="w-full bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white px-6 py-24"
     >
       {/* Heading */}
       <div className="max-w-6xl mx-auto text-center mb-16">
@@ -794,71 +966,103 @@ const Projects = () => {
         </p>
       </div>
 
-      {/* Grid */}
+      {/* Projects Grid */}
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="
-              bg-[#1e293b] 
-              border border-cyan-500/10 
-              rounded-xl 
-              shadow-md 
-              hover:shadow-cyan-500/20 
-              hover:-translate-y-1 
-              transition 
-              duration-300 
-              overflow-hidden
-            "
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-44 sm:h-48 object-cover"
-            />
+        {projects.map((project, index) => {
+          const [current, setCurrent] = useState(0);
 
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">
-                {project.title}
-              </h3>
+          return (
+            <div
+              key={index}
+              className="bg-[#1e293b] border border-cyan-500/10 rounded-xl shadow-md hover:shadow-cyan-500/20 transition overflow-hidden"
+            >
+              {/* Image */}
+              <div className="relative cursor-pointer">
+                <img
+                  src={project.images ? project.images[current] : project.image}
+                  alt={project.title}
+                  onClick={() => {
+                    if (project.images) {
+                      setModalImages(project.images);
+                      setModalIndex(current);
+                    }
+                  }}
+                  className="w-full h-44 sm:h-48 object-cover hover:opacity-90"
+                />
 
-              <p className="text-slate-400 text-sm mb-4">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {project.images && (
+                  <>
+                    <button
+                      onClick={() =>
+                        setCurrent(
+                          current === 0
+                            ? project.images.length - 1
+                            : current - 1
+                        )
+                      }
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-2 rounded"
+                    >
+                      ‹
+                    </button>
+                    <button
+                      onClick={() =>
+                        setCurrent(
+                          current === project.images.length - 1
+                            ? 0
+                            : current + 1
+                        )
+                      }
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-2 rounded"
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
               </div>
 
-              <div className="flex justify-between items-center text-sm">
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cyan-400 font-medium hover:underline"
-                >
-                  🔗 Live Demo
-                </a>
+              {/* Dots */}
+              {project.images && (
+                <div className="flex justify-center gap-1 mt-2">
+                  {project.images.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`w-2 h-2 rounded-full ${
+                        i === current ? 'bg-cyan-400' : 'bg-slate-500'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
 
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-300 font-medium hover:underline"
-                >
-                  💻 GitHub
-                </a>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">
+                  {project.title}
+                </h3>
+
+                <p className="text-slate-400 text-sm mb-3">
+                  {project.description}
+                </p>
+
+                {project.note && (
+                  <p className="text-yellow-400 text-xs mb-4">
+                    ⚠ {project.note}
+                  </p>
+                )}
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* CTA */}
@@ -866,11 +1070,48 @@ const Projects = () => {
         <a
           href="https://github.com/Akshatsainiaks"
           target="_blank"
+          rel="noopener noreferrer"
           className="inline-block px-6 py-3 bg-cyan-500 text-white rounded-md shadow hover:bg-cyan-600 transition"
         >
           View All Projects on GitHub
         </a>
       </div>
+
+      {/* Image Modal */}
+      {modalImages && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+          {/* Close */}
+          <button
+            onClick={() => setModalImages(null)}
+            className="absolute top-6 right-6 text-white text-3xl cursor-pointer"
+          >
+            ✕
+          </button>
+
+          {/* Previous */}
+          <button
+            onClick={prevImage}
+            className="absolute left-6 text-white text-4xl cursor-pointer select-none"
+          >
+            ‹
+          </button>
+
+          {/* Image */}
+          <img
+            src={modalImages[modalIndex]}
+            alt="Preview"
+            className="max-w-[90%] max-h-[90%] rounded-lg shadow-lg"
+          />
+
+          {/* Next */}
+          <button
+            onClick={nextImage}
+            className="absolute right-6 text-white text-4xl cursor-pointer select-none"
+          >
+            ›
+          </button>
+        </div>
+      )}
     </section>
   );
 };
