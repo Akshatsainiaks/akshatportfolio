@@ -1125,7 +1125,7 @@ import React, { useState } from 'react';
 import project1 from '../assets/project1.jpeg';
 import project2 from '../assets/project2.jpeg';
 import project3 from '../assets/project3.jpeg';
-
+import fixora from '../assets/fixora.png';
 // Auth system images
 import auth1 from '../assets/auth1.png';
 import auth2 from '../assets/auth2.png';
@@ -1198,6 +1198,22 @@ const projects = [
     note: 'Currently under development',
     images: [current1, current2],
   },
+  {
+  title: 'Fixora – Ticket & Issue Management System',
+  description:
+    'A full-stack ticket and issue management system with role-based access, project-wise tickets, and developer assignment. Built for learning real-world system design and workflows.',
+  tech: [
+    'React',
+    'Tailwind CSS',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'JWT',
+  ],
+  live: 'https://fixora-tawny.vercel.app/',
+  github: 'https://github.com/Akshatsainiaks/Fixora', // change if repo name differs
+  image: fixora, // 👉 replace with a Fixora screenshot when ready
+}
 ];
 
 const Projects = () => {
