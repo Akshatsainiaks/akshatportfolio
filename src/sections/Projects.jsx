@@ -1430,8 +1430,14 @@ import auth4 from '../assets/auth4.png';
 import auth5 from '../assets/auth5.png';
 import auth6 from '../assets/auth6.png';
 import auth7 from '../assets/auth7.png';
-import current1 from '../assets/current1.png';
-import current2 from '../assets/current2.png';
+// import current1 from '../assets/current1.png';
+// import current2 from '../assets/current2.png';
+import new1 from '../assets/new1.png'
+import new2 from '../assets/new2.png'
+import new3 from '../assets/new3.png'
+import new4 from '../assets/new4.png'
+import new5 from '../assets/new5.png'
+
 
 const projects = [
   {
@@ -1462,7 +1468,7 @@ const projects = [
     description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
     tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
     note: 'Currently under development',
-    images: [current1, current2],
+    images: [new1, new2, new3, new4 , new5],
   },
   {
     title: 'Weather App',
