@@ -1119,48 +1119,354 @@
 // export default Projects;
 
 
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-// Existing project images
+// // Existing project images
+// import project1 from '../assets/project1.jpeg';
+// import project2 from '../assets/project2.jpeg';
+// import project3 from '../assets/project3.jpeg';
+// import fixora from '../assets/fixora.png';
+// // Auth system images
+// import auth1 from '../assets/auth1.png';
+// import auth2 from '../assets/auth2.png';
+// import auth3 from '../assets/auth3.png';
+// import auth4 from '../assets/auth4.png';
+// import auth5 from '../assets/auth5.png';
+// import auth6 from '../assets/auth6.png';
+// import auth7 from '../assets/auth7.png'
+
+// // Currently working project images
+// import current1 from '../assets/current1.png';
+// import current2 from '../assets/current2.png';
+
+// const projects = [
+//   {
+//     title: 'AI SaaS Web App – Full Stack PERN Project',
+//     description:
+//       'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
+//     tech: [
+//       'React.js',
+//       'Tailwind CSS',
+//       'Node.js',
+//       'PostgreSQL',
+//       'Clerk',
+//       'Neon Database',
+//       'API',
+//     ],
+//     live: 'https://ai-project-brown-gamma.vercel.app/',
+//     github: 'https://github.com/Akshatsainiaks/AiProject',
+//     image: project3,
+//   },
+//   {
+//     title: 'Weather App',
+//     description:
+//       'A responsive weather application built with React, Tailwind CSS and OpenWeatherMap API.',
+//     tech: ['React', 'Vite', 'TailwindCSS', 'Weather API'],
+//     live: 'https://weather-app-akshat-project.vercel.app/',
+//     github: 'https://github.com/Akshatsainiaks/WeatherApp',
+//     image: project2,
+//   },
+//   {
+//     title: 'Tic Tac Toe Game',
+//     description:
+//       'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
+//     tech: ['HTML', 'CSS', 'JavaScript'],
+//     live: 'https://tic-tac-toe-akshat-project.vercel.app/',
+//     github: 'https://github.com/Akshatsainiaks/TicTacToe',
+//     image: project1,
+//   },
+//   {
+//     title: 'Auth System – Redis & ClickHouse (Docker)',
+//     description:
+//       'Authentication system built using Node.js with Redis for session management and ClickHouse for high-performance analytics. Fully containerized using Docker Compose and running on a Red Hat Linux VM (VMware).',
+//     tech: [
+//       'Node.js',
+//       'Redis',
+//       'ClickHouse',
+//       'Docker',
+//       'Docker Compose',
+//       'RHEL (VM)',
+//     ],
+//     note: 'Runs locally on Red Hat VM (Not Live)',
+//     images: [auth1, auth2, auth3, auth5, auth4, auth6, auth7],
+//   },
+//   {
+//     title: 'AI Interview Platform & Question Bank (In Progress)',
+//     description:
+//       'Currently working on an AI-powered interview preparation platform and question bank designed to help students learn and practice in an easy and structured way.',
+//     tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
+//     note: 'Currently under development',
+//     images: [current1, current2],
+//   },
+//   {
+//   title: 'Fixora – Ticket & Issue Management System',
+//   description:
+//     'A full-stack ticket and issue management system with role-based access, project-wise tickets, and developer assignment. Built for learning real-world system design and workflows.',
+//   tech: [
+//     'React',
+//     'Tailwind CSS',
+//     'Node.js',
+//     'Express.js',
+//     'MongoDB',
+//     'JWT',
+//   ],
+//   live: 'https://fixora-tawny.vercel.app/',
+//   github: 'https://github.com/Akshatsainiaks/Fixora', // change if repo name differs
+//   image: fixora, // 👉 replace with a Fixora screenshot when ready
+// }
+// ];
+
+// const Projects = () => {
+//   const [modalImages, setModalImages] = useState(null);
+//   const [modalIndex, setModalIndex] = useState(0);
+
+//   const nextImage = () => {
+//     setModalIndex((prev) =>
+//       prev === modalImages.length - 1 ? 0 : prev + 1
+//     );
+//   };
+
+//   const prevImage = () => {
+//     setModalIndex((prev) =>
+//       prev === 0 ? modalImages.length - 1 : prev - 1
+//     );
+//   };
+
+//   return (
+//     <section
+//       id="projects"
+//       className="w-full bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white px-6 py-24"
+//     >
+//       {/* Heading */}
+//       <div className="max-w-6xl mx-auto text-center mb-16">
+//         <h2 className="text-4xl md:text-5xl font-bold mb-4">
+//           My Projects <span className="text-cyan-400">💡</span>
+//         </h2>
+//         <p className="text-slate-300 text-lg">
+//           Some of the things I've built recently.
+//         </p>
+//       </div>
+
+//       {/* Projects Grid */}
+//       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+//         {projects.map((project, index) => {
+//           const [current, setCurrent] = useState(0);
+
+//           return (
+//             <div
+//               key={index}
+//               className="flex flex-col bg-[#1e293b] border border-cyan-500/10 rounded-xl shadow-md hover:shadow-cyan-500/20 transition overflow-hidden"
+//             >
+//               {/* Image */}
+//               <div className="relative">
+//                 <img
+//                   src={project.images ? project.images[current] : project.image}
+//                   alt={project.title}
+//                   onClick={() => {
+//                     if (project.live) {
+//                       window.open(project.live, '_blank');
+//                     } else if (project.images) {
+//                       setModalImages(project.images);
+//                       setModalIndex(current);
+//                     }
+//                   }}
+//                   className="w-full h-44 sm:h-48 object-cover hover:opacity-90 cursor-pointer"
+//                 />
+
+//                 {project.images && (
+//                   <>
+//                     <button
+//                       onClick={() =>
+//                         setCurrent(
+//                           current === 0
+//                             ? project.images.length - 1
+//                             : current - 1
+//                         )
+//                       }
+//                       className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-2 rounded"
+//                     >
+//                       ‹
+//                     </button>
+//                     <button
+//                       onClick={() =>
+//                         setCurrent(
+//                           current === project.images.length - 1
+//                             ? 0
+//                             : current + 1
+//                         )
+//                       }
+//                       className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-2 rounded"
+//                     >
+//                       ›
+//                     </button>
+//                   </>
+//                 )}
+//               </div>
+
+//               {/* Content */}
+//               <div className="p-6 flex flex-col flex-grow">
+//                 <h3 className="text-xl font-semibold mb-2">
+//                   {project.title}
+//                 </h3>
+
+//                 <p className="text-slate-400 text-sm mb-3">
+//                   {project.description}
+//                 </p>
+
+//                 {project.note && (
+//                   <p className="text-yellow-400 text-xs mb-4">
+//                     ⚠ {project.note}
+//                   </p>
+//                 )}
+
+//                 <div className="flex flex-wrap gap-2 mb-4">
+//                   {project.tech.map((tech) => (
+//                     <span
+//                       key={tech}
+//                       className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
+//                     >
+//                       {tech}
+//                     </span>
+//                   ))}
+//                 </div>
+
+//                 {/* Action Links */}
+//                 {(project.live || project.github) && (
+//                   <div className="mt-auto flex items-center justify-between text-sm pt-4 border-t border-cyan-500/10">
+//                     {project.live ? (
+//                       <a
+//                         href={project.live}
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="text-cyan-400 hover:text-cyan-300 transition"
+//                       >
+//                         🔗 Live
+//                       </a>
+//                     ) : (
+//                       <span />
+//                     )}
+
+//                     {project.github && (
+//                       <a
+//                         href={project.github}
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="text-slate-300 hover:text-white transition"
+//                       >
+//                         💻 GitHub
+//                       </a>
+//                     )}
+//                   </div>
+//                 )}
+//               </div>
+//             </div>
+//           );
+//         })}
+//       </div>
+
+//       {/* CTA */}
+//       <div className="text-center mt-12">
+//         <a
+//           href="https://github.com/Akshatsainiaks"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className="inline-block px-6 py-3 bg-cyan-500 text-white rounded-md shadow hover:bg-cyan-600 transition"
+//         >
+//           View All Projects on GitHub
+//         </a>
+//       </div>
+
+//       {/* Image Modal */}
+//       {modalImages && (
+//         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+//           <button
+//             onClick={() => setModalImages(null)}
+//             className="absolute top-6 right-6 text-white text-3xl cursor-pointer"
+//           >
+//             ✕
+//           </button>
+
+//           <button
+//             onClick={prevImage}
+//             className="absolute left-6 text-white text-4xl cursor-pointer"
+//           >
+//             ‹
+//           </button>
+
+//           <img
+//             src={modalImages[modalIndex]}
+//             alt="Preview"
+//             className="max-w-[90%] max-h-[90%] rounded-lg shadow-lg"
+//           />
+
+//           <button
+//             onClick={nextImage}
+//             className="absolute right-6 text-white text-4xl cursor-pointer"
+//           >
+//             ›
+//           </button>
+//         </div>
+//       )}
+//     </section>
+//   );
+// };
+
+// export default Projects;
+
+
+//final new
+import React, { useState } from 'react';
+import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
+
+// Image imports (kept from your original code)
 import project1 from '../assets/project1.jpeg';
 import project2 from '../assets/project2.jpeg';
 import project3 from '../assets/project3.jpeg';
 import fixora from '../assets/fixora.png';
-// Auth system images
 import auth1 from '../assets/auth1.png';
 import auth2 from '../assets/auth2.png';
 import auth3 from '../assets/auth3.png';
 import auth4 from '../assets/auth4.png';
 import auth5 from '../assets/auth5.png';
 import auth6 from '../assets/auth6.png';
-import auth7 from '../assets/auth7.png'
-
-// Currently working project images
+import auth7 from '../assets/auth7.png';
 import current1 from '../assets/current1.png';
 import current2 from '../assets/current2.png';
 
 const projects = [
   {
     title: 'AI SaaS Web App – Full Stack PERN Project',
-    description:
-      'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
-    tech: [
-      'React.js',
-      'Tailwind CSS',
-      'Node.js',
-      'PostgreSQL',
-      'Clerk',
-      'Neon Database',
-      'API',
-    ],
+    description: 'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
+    tech: ['React.js', 'Node.js', 'PostgreSQL', 'Clerk', 'API'],
     live: 'https://ai-project-brown-gamma.vercel.app/',
     github: 'https://github.com/Akshatsainiaks/AiProject',
     image: project3,
   },
   {
+    title: 'Fixora – Project Management System',
+    description: 'A full-stack project management system with role-based access and developer assignment workflows.',
+    tech: ['React', 'Tailwind', 'Node.js', 'MongoDB', 'JWT'],
+    live: 'https://fixora-tawny.vercel.app/',
+    github: 'https://github.com/Akshatsainiaks/Fixora',
+    image: fixora,
+  },
+  {
+    title: 'Auth System – Redis & ClickHouse',
+    description: 'Authentication system with Redis for sessions and ClickHouse for analytics. Fully containerized using Docker Compose on RHEL.',
+    tech: ['Node.js', 'Redis', 'ClickHouse', 'Docker', 'RHEL'],
+    note: 'Runs locally on Red Hat VM (Not Live)',
+    images: [auth1, auth2, auth3, auth5, auth4, auth6, auth7],
+  },
+  {
+    title: 'AI Interview Platform',
+    description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
+    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
+    note: 'Currently under development',
+    images: [current1, current2],
+  },
+  {
     title: 'Weather App',
-    description:
-      'A responsive weather application built with React, Tailwind CSS and OpenWeatherMap API.',
+    description: 'A responsive weather application built with React and OpenWeatherMap API.',
     tech: ['React', 'Vite', 'TailwindCSS', 'Weather API'],
     live: 'https://weather-app-akshat-project.vercel.app/',
     github: 'https://github.com/Akshatsainiaks/WeatherApp',
@@ -1168,179 +1474,114 @@ const projects = [
   },
   {
     title: 'Tic Tac Toe Game',
-    description:
-      'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
+    description: 'A simple and interactive tic tac toe game built using HTML, CSS and JavaScript.',
     tech: ['HTML', 'CSS', 'JavaScript'],
     live: 'https://tic-tac-toe-akshat-project.vercel.app/',
     github: 'https://github.com/Akshatsainiaks/TicTacToe',
     image: project1,
   },
-  {
-    title: 'Auth System – Redis & ClickHouse (Docker)',
-    description:
-      'Authentication system built using Node.js with Redis for session management and ClickHouse for high-performance analytics. Fully containerized using Docker Compose and running on a Red Hat Linux VM (VMware).',
-    tech: [
-      'Node.js',
-      'Redis',
-      'ClickHouse',
-      'Docker',
-      'Docker Compose',
-      'RHEL (VM)',
-    ],
-    note: 'Runs locally on Red Hat VM (Not Live)',
-    images: [auth1, auth2, auth3, auth5, auth4, auth6, auth7],
-  },
-  {
-    title: 'AI Interview Platform & Question Bank (In Progress)',
-    description:
-      'Currently working on an AI-powered interview preparation platform and question bank designed to help students learn and practice in an easy and structured way.',
-    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
-    note: 'Currently under development',
-    images: [current1, current2],
-  },
-  {
-  title: 'Fixora – Ticket & Issue Management System',
-  description:
-    'A full-stack ticket and issue management system with role-based access, project-wise tickets, and developer assignment. Built for learning real-world system design and workflows.',
-  tech: [
-    'React',
-    'Tailwind CSS',
-    'Node.js',
-    'Express.js',
-    'MongoDB',
-    'JWT',
-  ],
-  live: 'https://fixora-tawny.vercel.app/',
-  github: 'https://github.com/Akshatsainiaks/Fixora', // change if repo name differs
-  image: fixora, // 👉 replace with a Fixora screenshot when ready
-}
 ];
 
 const Projects = () => {
   const [modalImages, setModalImages] = useState(null);
   const [modalIndex, setModalIndex] = useState(0);
 
-  const nextImage = () => {
-    setModalIndex((prev) =>
-      prev === modalImages.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevImage = () => {
-    setModalIndex((prev) =>
-      prev === 0 ? modalImages.length - 1 : prev - 1
-    );
-  };
+  const nextImage = () => setModalIndex((prev) => (prev === modalImages.length - 1 ? 0 : prev + 1));
+  const prevImage = () => setModalIndex((prev) => (prev === 0 ? modalImages.length - 1 : prev - 1));
 
   return (
-    <section
-      id="projects"
-      className="w-full bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white px-6 py-24"
-    >
-      {/* Heading */}
-      <div className="max-w-6xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          My Projects <span className="text-cyan-400">💡</span>
+    <section id="projects" className="w-full bg-[#0a0a0c] text-white px-6 py-32 relative overflow-hidden">
+      {/* Background Ambient Glows */}
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-cyan-500/5 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-violet-600/5 rounded-full blur-[120px] -z-10" />
+
+      <div className="max-w-7xl mx-auto text-center mb-24">
+        <h2 className="text-5xl md:text-7xl font-black tracking-tighter bg-gradient-to-b from-white to-slate-500 bg-clip-text text-transparent uppercase mb-6">
+          Projects
         </h2>
-        <p className="text-slate-300 text-lg">
-          Some of the things I've built recently.
-        </p>
+        <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-600 mx-auto rounded-full" />
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
         {projects.map((project, index) => {
           const [current, setCurrent] = useState(0);
 
           return (
             <div
               key={index}
-              className="flex flex-col bg-[#1e293b] border border-cyan-500/10 rounded-xl shadow-md hover:shadow-cyan-500/20 transition overflow-hidden"
+              className="group flex flex-col bg-[#111113] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-violet-500/30 hover:shadow-[0_20px_40px_rgba(139,92,246,0.1)]"
             >
-              {/* Image */}
-              <div className="relative">
+              {/* Image Container */}
+              <div className="relative h-56 overflow-hidden">
                 <img
                   src={project.images ? project.images[current] : project.image}
                   alt={project.title}
                   onClick={() => {
-                    if (project.live) {
-                      window.open(project.live, '_blank');
-                    } else if (project.images) {
+                    if (project.live) window.open(project.live, '_blank');
+                    else if (project.images) {
                       setModalImages(project.images);
                       setModalIndex(current);
                     }
                   }}
-                  className="w-full h-44 sm:h-48 object-cover hover:opacity-90 cursor-pointer"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-pointer"
                 />
 
                 {project.images && (
-                  <>
+                  <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2 px-4 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
-                      onClick={() =>
-                        setCurrent(
-                          current === 0
-                            ? project.images.length - 1
-                            : current - 1
-                        )
-                      }
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-2 rounded"
+                      onClick={(e) => { e.stopPropagation(); setCurrent(current === 0 ? project.images.length - 1 : current - 1); }}
+                      className="w-8 h-8 flex items-center justify-center bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-cyan-500 transition-colors"
                     >
-                      ‹
+                      <FaChevronLeft size={12} />
                     </button>
                     <button
-                      onClick={() =>
-                        setCurrent(
-                          current === project.images.length - 1
-                            ? 0
-                            : current + 1
-                        )
-                      }
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-2 rounded"
+                      onClick={(e) => { e.stopPropagation(); setCurrent(current === project.images.length - 1 ? 0 : current + 1); }}
+                      className="w-8 h-8 flex items-center justify-center bg-black/60 backdrop-blur-md text-white rounded-full hover:bg-cyan-500 transition-colors"
                     >
-                      ›
+                      <FaChevronRight size={12} />
                     </button>
-                  </>
+                  </div>
                 )}
               </div>
 
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold mb-2">
+              {/* Content Area */}
+              <div className="p-8 flex flex-col flex-grow">
+                <h3 className="text-2xl font-bold mb-3 tracking-tight group-hover:text-cyan-400 transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-slate-400 text-sm mb-3">
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed font-light">
                   {project.description}
                 </p>
 
                 {project.note && (
-                  <p className="text-yellow-400 text-xs mb-4">
-                    ⚠ {project.note}
-                  </p>
+                  <div className="flex items-center gap-2 mb-6 px-3 py-1.5 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                    <span className="text-[10px] text-yellow-500 font-bold uppercase tracking-widest">Note: {project.note}</span>
+                  </div>
                 )}
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-3 py-1 text-xs rounded-full"
+                      className="bg-white/5 text-slate-300 border border-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Action Links */}
+                {/* Footer Links */}
                 {(project.live || project.github) && (
-                  <div className="mt-auto flex items-center justify-between text-sm pt-4 border-t border-cyan-500/10">
+                  <div className="mt-auto flex items-center justify-between pt-6 border-t border-white/5">
                     {project.live ? (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-cyan-400 hover:text-cyan-300 transition"
+                        className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-cyan-400 hover:text-white transition-all"
                       >
-                        🔗 Live
+                        <FaExternalLinkAlt size={12} /> Live Demo
                       </a>
                     ) : (
                       <span />
@@ -1351,9 +1592,9 @@ const Projects = () => {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-300 hover:text-white transition"
+                        className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-500 hover:text-white transition-all"
                       >
-                        💻 GitHub
+                        <FaGithub size={14} /> Source Code
                       </a>
                     )}
                   </div>
@@ -1364,46 +1605,46 @@ const Projects = () => {
         })}
       </div>
 
-      {/* CTA */}
-      <div className="text-center mt-12">
+      {/* GitHub CTA */}
+      <div className="text-center mt-20">
         <a
           href="https://github.com/Akshatsainiaks"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-6 py-3 bg-cyan-500 text-white rounded-md shadow hover:bg-cyan-600 transition"
+          className="inline-block px-10 py-4 bg-white text-black font-black uppercase tracking-[0.2em] rounded-2xl shadow-2xl transition-all hover:bg-cyan-400 active:scale-95 cursor-pointer"
         >
-          View All Projects on GitHub
+          Explore All Repositories
         </a>
       </div>
 
       {/* Image Modal */}
       {modalImages && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-[#0a0a0ce0] backdrop-blur-xl z-[1000] flex items-center justify-center p-6">
           <button
             onClick={() => setModalImages(null)}
-            className="absolute top-6 right-6 text-white text-3xl cursor-pointer"
+            className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center bg-white/10 text-white rounded-full hover:bg-red-500 transition-all cursor-pointer"
           >
-            ✕
+            <FaTimes size={20} />
           </button>
 
           <button
             onClick={prevImage}
-            className="absolute left-6 text-white text-4xl cursor-pointer"
+            className="absolute left-8 w-14 h-14 flex items-center justify-center bg-white/5 border border-white/10 text-white rounded-full hover:bg-cyan-500 transition-all cursor-pointer"
           >
-            ‹
+            <FaChevronLeft size={24} />
           </button>
 
           <img
             src={modalImages[modalIndex]}
             alt="Preview"
-            className="max-w-[90%] max-h-[90%] rounded-lg shadow-lg"
+            className="max-w-full max-h-[85vh] rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 animate-zoomIn"
           />
 
           <button
             onClick={nextImage}
-            className="absolute right-6 text-white text-4xl cursor-pointer"
+            className="absolute right-8 w-14 h-14 flex items-center justify-center bg-white/5 border border-white/10 text-white rounded-full hover:bg-cyan-500 transition-all cursor-pointer"
           >
-            ›
+            <FaChevronRight size={24} />
           </button>
         </div>
       )}
