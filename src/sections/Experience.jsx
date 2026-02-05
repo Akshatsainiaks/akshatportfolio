@@ -340,11 +340,9 @@ const experiences = [
     moreInfo: `
 - Configured and managed Linux servers  
 - Created Docker images and containers for internal applications  
-- Built CI/CD pipelines using GitHub Actions  
-- Automated deployments using shell scripts  
-- Set up Nginx reverse proxy for test environment  
-- Worked with AWS EC2 for hosting internal tools  
-- Monitored logs and optimized deployments  
+- Built CI/CD pipelines using Azure Devops 
+- Worked with Kubernetes production level 
+- Monitored logs and optimized deployments 
 `,
     skills: ["Linux", "Docker", "Git", "CI/CD"],
   },
@@ -357,10 +355,7 @@ const experiences = [
     description: "Developed ML models using Python and libraries such as NumPy and Pandas.",
     moreInfo: `
 - Learned basics of Machine Learning  
-- Worked on data cleaning & preprocessing  
-- Built ML models using NumPy & Pandas  
-- Created small prediction models  
-- Practiced data visualization  
+- Learn about NumPy & Pandas  
 `,
     skills: ["Python", "Pandas", "NumPy", "Machine Learning"],
   },
