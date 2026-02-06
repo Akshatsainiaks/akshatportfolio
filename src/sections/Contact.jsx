@@ -644,8 +644,8 @@ const Contact = () => {
                     exit={{ opacity: 0 }}
                     className="text-emerald-400 text-sm font-bold text-center bg-emerald-500/10 py-3 rounded-xl border border-emerald-500/20"
                   >
-                    ✅ Message intercepted. I'll get back to you shortly!
-                  </motion.div>
+                    {/* ✅ Message intercepted. I'll get back to you shortly! */}
+                   ✅ Thank you for your message. I’ll get back to you shortly!                  </motion.div>
                 )}
               </AnimatePresence>
             </form>
