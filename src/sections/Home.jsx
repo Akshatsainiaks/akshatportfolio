@@ -725,7 +725,8 @@
 //new final
 import React, { useState, useEffect } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
-import newprofile from '../assets/akshat.JPG';
+// import newprofile from '../assets/akshat.JPG';
+import newprofile from '../assets/new.jpg'
 import { FaGithub, FaLinkedin, FaChevronDown, FaTimes } from 'react-icons/fa';
 
 const Home = () => {

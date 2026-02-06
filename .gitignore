@@ -23,3 +23,22 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+
+
+# Assets / Images / Docs
+src/assets/
+public/*.png
+public/*.jpg
+public/*.jpeg
+public/*.svg
+public/*.webp
+public/*.pdf
+
+# Optional (if you never want any images tracked)
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.webp
+*.pdf
