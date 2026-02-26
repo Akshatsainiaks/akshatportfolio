@@ -1448,6 +1448,16 @@ const projects = [
     github: 'https://github.com/Akshatsainiaks/AiProject',
     image: project3,
   },
+      {
+    title: 'AI Interview Platform',
+    description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
+    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
+    // note: 'Currently under development',
+    // images: [new1, new2, new3, new4 , new5],
+    live: 'https://prep-vision-ai.vercel.app/',
+    github: 'https://github.com/Akshatsainiaks/PrepVision-AI',
+    image: new1,
+  },
   {
     title: 'Fixora – Project Management System',
     description: 'A full-stack project management system with role-based access and developer assignment workflows.',
@@ -1456,19 +1466,13 @@ const projects = [
     github: 'https://github.com/Akshatsainiaks/Fixora',
     image: fixora,
   },
+
   {
     title: 'Auth System – Redis & ClickHouse',
     description: 'Authentication system with Redis for sessions and ClickHouse for analytics. Fully containerized using Docker Compose on RHEL.',
     tech: ['Node.js', 'Redis', 'ClickHouse', 'Docker', 'RHEL'],
     note: 'Runs locally on Red Hat VM (Not Live)',
     images: [auth1, auth2, auth3, auth5, auth4, auth6, auth7],
-  },
-  {
-    title: 'AI Interview Platform',
-    description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
-    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
-    note: 'Currently under development',
-    images: [new1, new2, new3, new4 , new5],
   },
   {
     title: 'Weather App',
