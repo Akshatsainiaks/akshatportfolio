@@ -612,7 +612,7 @@
 //               </a>
 
 //               <a
-//                 href="/Akshat_Saini.pdf"
+//                 href="/Akshat_kumar_Saini_Resume.pdf"
 //                 download
 //                 className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-md font-medium hover:bg-cyan-500/10 transition"
 //               >
@@ -800,7 +800,7 @@ const Home = () => {
               </a>
 
               <a
-                href="/Akshat_Saini.pdf"
+                href="/Akshat_kumar_Saini_Resume.pdf"
                 download
                 className="px-8 py-4 border border-white/10 bg-white/5 backdrop-blur-md text-white rounded-xl font-bold hover:bg-white/10 transition-all hover:border-white/20"
               >

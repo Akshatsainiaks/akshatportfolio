@@ -323,7 +323,7 @@
 
 //             {/* Resume */}
 //             <a
-//               href="/Akshat_Saini.pdf"
+//               href="/Akshat_kumar_Saini_Resume.pdf"
 //               download
 //               className="ml-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-md text-sm shadow hover:scale-105 transition"
 //             >
@@ -359,7 +359,7 @@
 //             ))}
 
 //             <a
-//               href="/Akshat_Saini.pdf"
+//               href="/Akshat_kumar_Saini_Resume.pdf"
 //               download
 //               className="inline-block mt-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-2 px-4 rounded-md shadow hover:scale-105 transition"
 //             >
@@ -452,7 +452,7 @@ const Navbar = () => {
 
             {/* Premium Resume Button */}
             <a
-              href="/Akshat_Saini.pdf"
+              href="/Akshat_kumar_Saini_Resume.pdf"
               download
               className="ml-4 px-5 py-2.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-cyan-500/40 active:scale-95"
             >
@@ -497,7 +497,7 @@ const Navbar = () => {
             <div className="w-full h-[1px] bg-white/5 my-2"></div>
 
             <a
-              href="/Akshat_Saini.pdf"
+              href="/Akshat_kumar_Saini_Resume.pdf"
               download
               className="w-full text-center py-4 bg-gradient-to-r from-cyan-500 to-violet-600 text-white font-black uppercase tracking-widest rounded-xl shadow-lg active:scale-95 transition-transform"
             >
