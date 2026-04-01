@@ -1451,7 +1451,7 @@ const projects = [
       {
     title: 'AI Interview Platform',
     description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
-    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT'],
+    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT' , 'Hugging Face'],
     // note: 'Currently under development',
     // images: [new1, new2, new3, new4 , new5],
     live: 'https://prep-vision-ai.vercel.app/',

@@ -324,7 +324,7 @@ const education = [
     school: "Techno India NJR Institute of Technology",
     location: "Udaipur, Rajasthan",
     duration: "2022 – 2026",
-    description: "Current Semester: 7th | CGPA = 8.28",
+    description: "Current Semester: 8th | CGPA = 8.38",
     logo: tinjnrLogo,
   },
 ];
