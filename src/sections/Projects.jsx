@@ -1435,11 +1435,19 @@ import auth7 from '../assets/auth7.png';
 import new1 from '../assets/new1.png'
 import new2 from '../assets/new2.png'
 import new3 from '../assets/new3.png'
-import new4 from '../assets/new4.png'
 import new5 from '../assets/new5.png'
+import srevox_dashboard from '../assets/srevox_dashboard.png';
 
 
 const projects = [
+  {
+    title: 'Srevox – Kubernetes Observability Platform',
+    description: 'An all-in-one Kubernetes observability & incident intelligence platform featuring real-time multi-container log streaming, topology mapping, and automated diagnostic runbooks.',
+    tech: ['Next.js', 'Go', 'Kubernetes', 'Helm', 'eBPF', 'PostgreSQL', 'Redis'],
+    live: 'https://srevox-website.vercel.app/',
+    github: 'https://github.com/Akshatsainiaks/srevox',
+    image: srevox_dashboard,
+  },
   {
     title: 'AI SaaS Web App – Full Stack PERN Project',
     description: 'Developed and deployed a full-stack AI SaaS application using React.js, Node.js, Express.js, and PostgreSQL.',
@@ -1448,24 +1456,24 @@ const projects = [
     github: 'https://github.com/Akshatsainiaks/AiProject',
     image: project3,
   },
-      {
-    title: 'AI Interview Platform',
-    description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
-    tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT' , 'Hugging Face'],
-    // note: 'Currently under development',
-    // images: [new1, new2, new3, new4 , new5],
-    live: 'https://prep-vision-ai.vercel.app/',
-    github: 'https://github.com/Akshatsainiaks/PrepVision-AI',
-    image: new1,
-  },
-  {
-    title: 'Fixora – Project Management System',
-    description: 'A full-stack project management system with role-based access and developer assignment workflows.',
-    tech: ['React', 'Tailwind', 'Node.js', 'MongoDB', 'JWT'],
-    live: 'https://fixora-tawny.vercel.app/',
-    github: 'https://github.com/Akshatsainiaks/Fixora',
-    image: fixora,
-  },
+  // {
+  //   title: 'AI Interview Platform',
+  //   description: 'AI-powered interview preparation platform and question bank designed for structured learning and practice.',
+  //   tech: ['React', 'Node.js', 'MongoDB', 'OpenAPI', 'JWT' , 'Hugging Face'],
+  //   // note: 'Currently under development',
+  //   // images: [new1, new2, new3, new4 , new5],
+  //   live: 'https://prep-vision-ai.vercel.app/',
+  //   github: 'https://github.com/Akshatsainiaks/PrepVision-AI',
+  //   image: new1,
+  // },
+  // {
+  //   title: 'Fixora – Project Management System',
+  //   description: 'A full-stack project management system with role-based access and developer assignment workflows.',
+  //   tech: ['React', 'Tailwind', 'Node.js', 'MongoDB', 'JWT'],
+  //   live: 'https://fixora-tawny.vercel.app/',
+  //   github: 'https://github.com/Akshatsainiaks/Fixora',
+  //   image: fixora,
+  // },
 
   {
     title: 'Auth System – Redis & ClickHouse',
