@@ -89,6 +89,8 @@ import BackToTop from "./components/BackToTop";
 import Experience from "./sections/Experience";
 
 import PageLoader from "./components/PageLoader";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -129,6 +131,10 @@ function App() {
           <BackToTop />
         </div>
       )}
+
+      {/* Vercel Analytics & Speed Insights */}
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 }
