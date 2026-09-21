@@ -1444,8 +1444,8 @@ const projects = [
     title: 'Srevox – Kubernetes Observability Platform',
     description: 'An all-in-one Kubernetes observability & incident intelligence platform featuring real-time multi-container log streaming, topology mapping, and automated diagnostic runbooks.',
     tech: ['Next.js', 'Go', 'Kubernetes', 'Helm', 'eBPF', 'PostgreSQL', 'Redis'],
-    live: 'https://srevox-website.vercel.app/',
-    github: 'https://github.com/Akshatsainiaks/srevox',
+    live: 'https://srevox.in',
+    github: 'https://github.com/Akshatsainiaks/srevox-setup',
     image: srevox_dashboard,
   },
   {

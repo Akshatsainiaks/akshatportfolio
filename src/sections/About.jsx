@@ -362,7 +362,7 @@ const About = () => {
 
           <p className="text-lg text-slate-400 leading-relaxed mb-8 max-w-2xl">
             I’m <span className="font-bold text-white border-b-2 border-cyan-500/50">Akshat Saini</span>, 
-            a final-year B.Tech student with a strong interest in Full Stack and DevOps. 
+            a Computer Science graduate (B.Tech) with a strong interest in Full Stack and DevOps. 
             Currently working as a <span className="text-violet-400 font-medium">DevOps intern</span>, 
             I focus on building scalable applications and continuously learning to grow into a successful software engineer.
           </p>
