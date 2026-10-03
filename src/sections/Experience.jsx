@@ -293,23 +293,26 @@
 
 
 //final new
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, XCircle, GraduationCap, Briefcase, Calendar } from "lucide-react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useSpring, useReducedMotion } from "framer-motion";
+import { MapPin, X, GraduationCap, Briefcase, Calendar, ArrowRight, Check } from "lucide-react";
+import Tilt from "../components/Tilt";
 import hoickoLogo from "../assets/hoicko.jpeg";
 import ibmLogo from "../assets/ibmLogo.png";
 import gnpsLogo from "../assets/gnpsLogo.png";
 import tinjnrLogo from "../assets/tinjnrLogo.png";
 
+const EASE = [0.16, 1, 0.3, 1];
+
+// newest first
 const education = [
   {
-    title: "Secondary (10th)",
-    school: "Guru Nanak Public School (RBSE)",
+    title: "B.Tech in Computer Science",
+    school: "Techno India NJR Institute of Technology",
     location: "Udaipur, Rajasthan",
-    duration: "2019 – 2020",
-    description: "Percentage = 80.0",
-    logo: gnpsLogo,
+    duration: "2022 – 2026",
+    description: "Completed | CGPA = 8.44",
+    logo: tinjnrLogo,
   },
   {
     title: "Senior Secondary (12th PCM)",
@@ -320,12 +323,12 @@ const education = [
     logo: gnpsLogo,
   },
   {
-    title: "B.Tech in Computer Science",
-    school: "Techno India NJR Institute of Technology",
+    title: "Secondary (10th)",
+    school: "Guru Nanak Public School (RBSE)",
     location: "Udaipur, Rajasthan",
-    duration: "2022 – 2026",
-    description: "Completed | CGPA = 8.44",
-    logo: tinjnrLogo,
+    duration: "2019 – 2020",
+    description: "Percentage = 80.0",
+    logo: gnpsLogo,
   },
 ];
 
@@ -334,204 +337,302 @@ const experiences = [
     role: "DevOps Intern",
     company: "Hoicko Technologies Private Limited",
     logo: hoickoLogo,
-    Location: "Udaipur, Rajasthan",
-    duration: "Sep 2025 – Present",
+    location: "Udaipur, Rajasthan",
+    duration: "Sep 2025 – Dec 2025",
     description: "Managed Linux administration, Docker, CI/CD pipelines, and automated deployment workflows.",
-    moreInfo: `
-- Configured and managed Linux servers  
-- Created Docker images and containers for internal applications  
-- Built CI/CD pipelines using Azure Devops 
-- Worked with Kubernetes production level 
-- Monitored logs and optimized deployments 
-`,
+    moreInfo: [
+      "Configured and managed Linux servers",
+      "Created Docker images and containers for internal applications",
+      "Built CI/CD pipelines using Azure DevOps",
+      "Worked with Kubernetes at production level",
+      "Monitored logs and optimized deployments",
+    ],
     skills: ["Linux", "Docker", "Git", "CI/CD"],
   },
   {
     role: "IBM – Nasscom ML Intern",
     company: "IBM",
     logo: ibmLogo,
-    Location: "Udaipur, Rajasthan",
+    location: "Udaipur, Rajasthan",
     duration: "Dec 2022 – Feb 2023",
     description: "Developed ML models using Python and libraries such as NumPy and Pandas.",
-    moreInfo: `
-- Learned basics of Machine Learning  
-- Learn about NumPy & Pandas  
-`,
+    moreInfo: ["Learned the basics of Machine Learning", "Learned about NumPy & Pandas"],
     skills: ["Python", "Pandas", "NumPy", "Machine Learning"],
   },
 ];
+
+const accents = {
+  violet: {
+    icon: "bg-violet-500/10 border-violet-500/20 text-violet-400",
+    text: "text-violet-400",
+    dot: "border-violet-500 shadow-[0_0_14px_rgba(139,92,246,0.7)]",
+    line: "from-violet-500 via-violet-500/60 to-transparent",
+    hover: "hover:border-violet-500/30",
+  },
+  cyan: {
+    icon: "bg-cyan-500/10 border-cyan-500/20 text-cyan-400",
+    text: "text-cyan-400",
+    dot: "border-cyan-500 shadow-[0_0_14px_rgba(34,211,238,0.7)]",
+    line: "from-cyan-500 via-cyan-500/60 to-transparent",
+    hover: "hover:border-cyan-500/30",
+  },
+};
+
+/* Timeline column — the line draws itself as you scroll */
+const Timeline = ({ title, icon, accent, from, children }) => {
+  const ref = useRef(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 60%"] });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+  const a = accents[accent];
+
+  return (
+    <div>
+      <motion.div
+        initial={{ opacity: 0, x: from === "left" ? -30 : 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="flex items-center gap-4 mb-12 justify-center lg:justify-start"
+      >
+        <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center ${a.icon}`}>{icon}</div>
+        <h3 className="text-2xl sm:text-3xl font-bold text-white uppercase italic tracking-widest">{title}</h3>
+      </motion.div>
+
+      <div ref={ref} className="relative ml-3 sm:ml-6">
+        {/* track + animated fill */}
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-white/5" />
+        <motion.div
+          className={`absolute left-0 top-0 bottom-0 w-px origin-top bg-gradient-to-b ${a.line}`}
+          style={{ scaleY: reduceMotion ? 1 : scaleY }}
+        />
+        <div className="space-y-10">{children}</div>
+      </div>
+    </div>
+  );
+};
+
+/* Single timeline entry — swings in with a 3D turn, then tilts on hover */
+const Entry = ({ accent, from, index, children }) => {
+  const a = accents[accent];
+  return (
+    <motion.div
+      className="relative pl-8 sm:pl-10"
+      style={{ perspective: 1200 }}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+    >
+      {/* dot */}
+      <motion.span
+        className={`absolute -left-[7px] top-8 w-[15px] h-[15px] rounded-full bg-[#0a0a0c] border-2 ${a.dot}`}
+        variants={{ hidden: { scale: 0 }, show: { scale: 1, transition: { type: "spring", stiffness: 300, damping: 15, delay: index * 0.1 } } }}
+      />
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, rotateY: from === "left" ? 25 : -25, x: from === "left" ? -40 : 40 },
+          show: { opacity: 1, rotateY: 0, x: 0, transition: { duration: 0.9, ease: EASE, delay: index * 0.1 } },
+        }}
+      >
+        <Tilt max={6} scale={1.01} glare rounded="rounded-[2rem]">
+          <div className={`p-6 sm:p-8 rounded-[2rem] bg-[#111113] border border-white/5 ${a.hover} transition-colors duration-500 shadow-xl`}>
+            {children}
+          </div>
+        </Tilt>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const CardHeader = ({ logo, title, subtitle, duration, accent, current }) => (
+  <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-5">
+    <div className="flex items-center gap-4">
+      <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#ffffff] p-2 border border-white/10">
+        <img src={logo} alt="" className="w-full h-full object-contain" />
+      </div>
+      <div>
+        <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug">{title}</h4>
+        <p className={`${accents[accent].text} text-sm font-medium`}>{subtitle}</p>
+      </div>
+    </div>
+    <div className="flex sm:flex-col items-center sm:items-end gap-2 shrink-0">
+      {current && (
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+          </span>
+          Current
+        </span>
+      )}
+      <span className="px-3.5 py-1.5 rounded-full bg-white/5 text-slate-400 text-xs font-bold border border-white/5 whitespace-nowrap">
+        {duration}
+      </span>
+    </div>
+  </div>
+);
 
 const Experience = () => {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    document.body.style.overflow = selected ? "hidden" : "auto";
-    return () => (document.body.style.overflow = "auto");
+    if (!selected) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => e.key === "Escape" && setSelected(null);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", onKey);
+    };
   }, [selected]);
 
   return (
-    <section id="experience" className="relative py-32 px-6 bg-[#0a0a0c] text-white overflow-hidden">
+    <section id="experience" className="relative py-28 px-6 bg-[#0a0a0c] text-white overflow-hidden">
       {/* Background Ambient Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] -z-10" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto text-center mb-24">
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter bg-gradient-to-b from-white to-slate-500 bg-clip-text text-transparent uppercase mb-6">
-          Education & Experience
+      {/* Header */}
+      <motion.div
+        className="relative max-w-7xl mx-auto text-center mb-20"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: EASE }}
+      >
+        <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-cyan-500/30 bg-cyan-500/10">
+          <span className="text-xs font-bold tracking-[0.2em] text-cyan-400 uppercase">My Journey</span>
+        </div>
+        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase">
+          Education &{" "}
+          <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">Experience</span>
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-violet-600 mx-auto rounded-full" />
-      </div>
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 relative">
-        {/* Education Column */}
-        <div className="space-y-12">
-          <div className="flex items-center gap-4 mb-12 justify-center lg:justify-start">
-            <div className="w-12 h-12 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
-              <GraduationCap size={28} />
-            </div>
-            <h3 className="text-3xl font-bold tracking-tight text-white uppercase italic tracking-widest">Education</h3>
-          </div>
+      <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+        {/* Education */}
+        <Timeline title="Education" icon={<GraduationCap size={26} />} accent="violet" from="left">
+          {education.map((edu, i) => (
+            <Entry key={edu.title} accent="violet" from="left" index={i}>
+              <CardHeader logo={edu.logo} title={edu.title} subtitle={edu.school} duration={edu.duration} accent="violet" />
+              <p className="text-slate-300 text-sm mb-4 font-medium">{edu.description}</p>
+              <div className="flex items-center gap-2 text-slate-500 text-xs font-medium">
+                <MapPin size={14} className="text-violet-400" /> {edu.location}
+              </div>
+            </Entry>
+          ))}
+        </Timeline>
 
-          <div className="relative border-l border-white/5 ml-6 space-y-12">
-            {education.map((edu, index) => (
-              <motion.div key={index} className="relative pl-10" whileHover={{ x: 10 }}>
-                <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[#0a0a0c] border-2 border-violet-500 shadow-[0_0_10px_rgba(139,92,246,0.5)]" />
-                <div className="p-8 rounded-[2rem] bg-[#111113] border border-white/5 hover:border-violet-500/30 transition-all duration-500 shadow-xl">
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-white/5 p-2 border border-white/10">
-                        <img src={edu.logo} alt="School Logo" className="w-full h-full object-contain" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold text-white tracking-tight">{edu.title}</h4>
-                        <p className="text-violet-400 text-sm font-medium">{edu.school}</p>
-                      </div>
-                    </div>
-                    <span className="px-4 py-1.5 rounded-full bg-white/5 text-slate-400 text-xs font-bold border border-white/5 whitespace-nowrap tracking-wide">
-                      {edu.duration}
-                    </span>
-                  </div>
-                  <p className="text-slate-400 text-sm mb-4 leading-relaxed font-light">{edu.description}</p>
-                  <div className="flex items-center gap-2 text-slate-500 text-xs font-medium tracking-wide">
-                    <MapPin size={14} className="text-violet-500" /> {edu.location}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Experience Column */}
-        <div className="space-y-12">
-          <div className="flex items-center gap-4 mb-12 justify-center lg:justify-start">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-              <Briefcase size={28} />
-            </div>
-            <h3 className="text-3xl font-bold tracking-tight text-white uppercase italic tracking-widest">Experience</h3>
-          </div>
-
-          <div className="relative border-l border-white/5 ml-6 space-y-12">
-            {experiences.map((exp, index) => (
-              <motion.div key={index} className="relative pl-10" whileHover={{ x: 10 }}>
-                <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-[#0a0a0c] border-2 border-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
-                <div className="p-8 rounded-[2rem] bg-[#111113] border border-white/5 hover:border-cyan-500/30 transition-all duration-500 shadow-xl">
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-white/5 p-2 border border-white/10">
-                        <img src={exp.logo} alt="Company Logo" className="w-full h-full object-contain" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold text-white tracking-tight">{exp.role}</h4>
-                        <p className="text-cyan-400 text-sm font-medium">{exp.company}</p>
-                      </div>
-                    </div>
-                    <span className="px-4 py-1.5 rounded-full bg-white/5 text-slate-400 text-xs font-bold border border-white/5 whitespace-nowrap tracking-wide">
-                      {exp.duration}
-                    </span>
-                  </div>
-                  
-                  <p className="text-slate-400 text-sm mb-6 leading-relaxed font-light">{exp.description}</p>
-
-                  <div className="flex flex-wrap items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-2">
-                      {exp.skills.map((skill, idx) => (
-                        <span key={idx} className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-lg bg-cyan-500/5 border border-cyan-500/10 text-cyan-400">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                    <button
-                      onClick={() => setSelected(exp)}
-                      className="group flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white hover:text-cyan-400 transition-colors cursor-pointer"
+        {/* Experience */}
+        <Timeline title="Experience" icon={<Briefcase size={26} />} accent="cyan" from="right">
+          {experiences.map((exp, i) => (
+            <Entry key={exp.role} accent="cyan" from="right" index={i}>
+              <CardHeader
+                logo={exp.logo}
+                title={exp.role}
+                subtitle={exp.company}
+                duration={exp.duration}
+                accent="cyan"
+                current={exp.current}
+              />
+              <p className="text-slate-400 text-sm mb-3 leading-relaxed">{exp.description}</p>
+              <div className="flex items-center gap-2 text-slate-500 text-xs font-medium mb-6">
+                <MapPin size={14} className="text-cyan-400" /> {exp.location}
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap gap-2">
+                  {exp.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-lg bg-cyan-500/5 border border-cyan-500/15 text-cyan-400"
                     >
-                      More Details <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
-                  </div>
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                <button
+                  onClick={() => setSelected(exp)}
+                  className="group inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white hover:text-cyan-400 transition-colors cursor-pointer"
+                >
+                  More Details <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </Entry>
+          ))}
+        </Timeline>
       </div>
 
-      {/* MODAL REDESIGN */}
+      {/* Details modal */}
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 bg-[#0a0a0ce0] backdrop-blur-xl flex items-center justify-center z-[1000] px-6"
+            className="fixed inset-0 bg-[#0a0a0ce0] backdrop-blur-xl flex items-center justify-center z-[1100] px-4 sm:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setSelected(null)}
+            style={{ perspective: 1200 }}
           >
             <motion.div
-              className="bg-[#0d0d0f] border border-white/10 rounded-[2.5rem] p-10 max-w-2xl w-full shadow-2xl relative max-h-[85vh] overflow-y-auto scrollbar-none"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 50, opacity: 0 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${selected.role} details`}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-[#0d0d0f] border border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 max-w-2xl w-full shadow-2xl max-h-[85vh] overflow-y-auto"
+              initial={{ opacity: 0, rotateX: -20, y: 60, scale: 0.95 }}
+              animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+              exit={{ opacity: 0, rotateX: 15, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: EASE }}
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-8 right-8 text-slate-500 hover:text-white transition-all transform hover:rotate-90 cursor-pointer"
+                aria-label="Close"
+                className="absolute top-5 right-5 sm:top-8 sm:right-8 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:rotate-90 transition-all cursor-pointer"
               >
-                <XCircle size={32} />
+                <X size={18} />
               </button>
 
-              <div className="flex items-center gap-6 mb-12 border-b border-white/5 pb-8">
-                <div className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 p-4">
-                  <img src={selected.logo} alt="Logo" className="w-full h-full object-contain" />
+              <div className="flex items-center gap-5 mb-8 pb-8 border-b border-white/5 pr-10">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-3xl bg-[#ffffff] border border-white/10 p-3">
+                  <img src={selected.logo} alt="" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-black text-white leading-tight uppercase tracking-tight">
-                    {selected.role}
-                  </h3>
-                  <div className="flex items-center gap-4 mt-2">
-                    <p className="text-cyan-400 font-bold uppercase text-xs tracking-widest">{selected.company}</p>
-                    <span className="w-1 h-1 rounded-full bg-slate-700" />
+                  <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight tracking-tight">{selected.role}</h3>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2">
+                    <p className="text-cyan-400 font-bold text-xs uppercase tracking-widest">{selected.company}</p>
                     <p className="text-slate-500 text-xs font-medium uppercase tracking-widest flex items-center gap-1">
-                      <Calendar size={12}/> {selected.duration}
+                      <Calendar size={12} /> {selected.duration}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                {selected.moreInfo.trim().split("\n").map((line, i) => (
-                    <div key={i} className="flex gap-4 items-start group">
-                      <div className="w-1.5 h-1.5 mt-2 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)] flex-shrink-0 group-hover:scale-150 transition-transform" />
-                      <p className="text-slate-300 text-sm leading-relaxed font-light">
-                        {line.replace("-", "").trim()}
-                      </p>
-                    </div>
+              <ul className="space-y-4">
+                {selected.moreInfo.map((line, i) => (
+                  <motion.li
+                    key={line}
+                    className="flex gap-3 items-start"
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + i * 0.07 }}
+                  >
+                    <span className="mt-0.5 w-5 h-5 shrink-0 flex items-center justify-center rounded-full bg-cyan-500/10 text-cyan-400">
+                      <Check size={12} />
+                    </span>
+                    <p className="text-slate-300 text-sm leading-relaxed">{line}</p>
+                  </motion.li>
                 ))}
-              </div>
+              </ul>
 
-              <div className="mt-12 pt-8 border-t border-white/5">
-                <button
-                  onClick={() => setSelected(null)}
-                  className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-cyan-400 transition-all active:scale-95 cursor-pointer"
-                >
-                  Close
-                </button>
+              <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t border-white/5">
+                {selected.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-lg bg-white/5 border border-white/10 text-slate-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           </motion.div>

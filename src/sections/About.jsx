@@ -332,129 +332,315 @@
 
 //new final
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { Award, Rocket, Layers } from 'lucide-react';
+import { FaReact, FaNodeJs, FaGitAlt, FaDatabase } from 'react-icons/fa';
+import { SiMongodb, SiTailwindcss, SiExpress, SiDocker, SiGo } from 'react-icons/si';
+import Tilt from '../components/Tilt';
+
+const EASE = [0.16, 1, 0.3, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: EASE, delay: i * 0.08 },
+  }),
+};
+
+// 3D flip-up entrance for highlight cards
+const flipUp = {
+  hidden: { opacity: 0, rotateX: -50, y: 30 },
+  show: (i = 0) => ({
+    opacity: 1,
+    rotateX: 0,
+    y: 0,
+    transition: { duration: 0.8, ease: EASE, delay: 0.25 + i * 0.12 },
+  }),
+};
+
+// pop-in for tech chips
+const pop = {
+  hidden: { opacity: 0, scale: 0.6, y: 10 },
+  show: (i = 0) => ({
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 260, damping: 18, delay: 0.6 + i * 0.05 },
+  }),
+};
+
+const highlights = [
+  {
+    icon: <Award size={20} />,
+    tint: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
+    title: 'Certification',
+    body: (
+      <>
+        <strong className="text-white font-semibold">Red Hat Certified System Administrator (RHCSA)</strong> with
+        hands-on experience in Linux administration.
+      </>
+    ),
+  },
+  {
+    icon: <Rocket size={20} />,
+    tint: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+    title: 'Focus Areas',
+    body: (
+      <>
+        Interested in <strong className="text-white font-semibold">DevOps, automation, containers,</strong> and
+        building scalable, reliable systems.
+      </>
+    ),
+  },
+  {
+    icon: <Layers size={20} />,
+    tint: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
+    title: 'Specialization',
+    body: (
+      <>
+        Worked on projects involving <strong className="text-white font-semibold">DevOps and full stack</strong>{' '}
+        development.
+      </>
+    ),
+  },
+];
+
+const stack = [
+  { name: 'React.js', icon: <FaReact className="text-cyan-400" /> },
+  { name: 'Node.js', icon: <FaNodeJs className="text-green-500" /> },
+  { name: 'Go', icon: <SiGo className="text-cyan-500" /> },
+  { name: 'SQL', icon: <FaDatabase className="text-blue-500" /> },
+  { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-400" /> },
+  { name: 'Express', icon: <SiExpress className="text-slate-300" /> },
+  { name: 'Git & GitHub', icon: <FaGitAlt className="text-orange-500" /> },
+  { name: 'DevOps', icon: <SiDocker className="text-blue-500" /> },
+];
+
+// ---------- Animated terminal card ----------
+const PROMPT = 'akshat@portfolio:~$';
+
+const script = [
+  { cmd: 'whoami', out: [[{ t: 'akshat-saini', c: 'text-white' }]] },
+  { cmd: 'cat role.txt', out: [[{ t: 'Software Engineer', c: 'text-cyan-400 font-semibold' }]] },
+  {
+    cmd: 'kubectl get skills',
+    out: [
+      [{ t: 'NAME         TYPE       STATUS', c: 'text-slate-500' }],
+      ...[
+        ['react', 'frontend'],
+        ['node', 'backend'],
+        ['go', 'backend'],
+        ['docker', 'devops'],
+        ['kubernetes', 'devops'],
+        ['linux', 'system'],
+      ].map(([name, type]) => [
+        { t: name.padEnd(13) + type.padEnd(11), c: 'text-slate-300' },
+        { t: 'Running', c: 'text-emerald-400' },
+      ]),
+    ],
+  },
+  {
+    cmd: 'echo $STATUS',
+    out: [[{ t: '✔ Open to opportunities', c: 'text-emerald-400 font-semibold' }]],
+  },
+];
+
+const TYPE_MS = 45; // per typed character
+const OUT_MS = 90; // per output line
+const PAUSE_MS = 350; // before typing / before output / between commands
+
+const Terminal = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
+  const reduceMotion = useReducedMotion();
+
+  // step = current command, chars = typed chars of it, outs = output lines shown
+  const [step, setStep] = useState(0);
+  const [chars, setChars] = useState(0);
+  const [outs, setOuts] = useState(0);
+  const done = reduceMotion || step >= script.length;
+
+  useEffect(() => {
+    if (!inView || done) return;
+
+    const { cmd, out } = script[step];
+    let id;
+    if (chars < cmd.length) {
+      id = setTimeout(() => setChars((c) => c + 1), chars === 0 ? PAUSE_MS : TYPE_MS);
+    } else if (outs < out.length) {
+      id = setTimeout(() => setOuts((o) => o + 1), outs === 0 ? PAUSE_MS : OUT_MS);
+    } else {
+      id = setTimeout(() => {
+        setStep((s) => s + 1);
+        setChars(0);
+        setOuts(0);
+      }, PAUSE_MS);
+    }
+    return () => clearTimeout(id);
+  }, [inView, done, step, chars, outs]);
+
+  const cursor = <span className="inline-block w-2 h-4 -mb-0.5 ml-0.5 bg-cyan-400 animate-pulse" />;
+
+  const promptLine = (text, withCursor) => (
+    <div>
+      <span className="text-emerald-400">{PROMPT}</span> <span className="text-white">{text}</span>
+      {withCursor && cursor}
+    </div>
+  );
+
+  return (
+    <div ref={ref} className="relative w-full max-w-md group">
+      {/* Gradient edge glow */}
+      <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-cyan-500/40 via-transparent to-violet-500/40 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <div className="relative rounded-2xl bg-[#0d0d0f] border border-white/10 shadow-2xl overflow-hidden">
+        {/* Title bar */}
+        <div className="relative flex items-center gap-2 px-4 h-11 bg-white/5 border-b border-white/5">
+          <span className="w-3 h-3 bg-[#ff5f56] rounded-full" />
+          <span className="w-3 h-3 bg-[#ffbd2e] rounded-full" />
+          <span className="w-3 h-3 bg-[#27c93f] rounded-full" />
+          <span className="absolute left-1/2 -translate-x-1/2 text-[11px] font-mono text-slate-500">
+            akshat — zsh
+          </span>
+        </div>
+
+        {/* Body */}
+        <div className="p-5 sm:p-6 h-[430px] font-mono text-xs sm:text-[13px] leading-6 whitespace-pre overflow-hidden">
+          {script.map((entry, i) => {
+            if (!done && i > step) return null;
+            const current = !done && i === step;
+            const typed = current ? entry.cmd.slice(0, chars) : entry.cmd;
+            const shownOut = current ? entry.out.slice(0, outs) : entry.out;
+            return (
+              <div key={entry.cmd} className="mb-2">
+                {promptLine(typed, current && outs === 0)}
+                {shownOut.map((line, li) => (
+                  <div key={li}>
+                    {line.map((seg, si) => (
+                      <span key={si} className={seg.c}>{seg.t}</span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+          {done && promptLine('', true)}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   return (
     <section
       id="about"
-      className="overflow-x-hidden min-h-screen px-6 py-24 bg-[#0a0a0c] text-white flex items-center justify-center relative"
+      className="relative overflow-hidden min-h-screen px-6 py-28 bg-[#0a0a0c] text-white flex items-center justify-center"
     >
       {/* Subtle Background Glows */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-violet-600/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-violet-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div
-        className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 z-10"
-        data-aos="fade-up"
-      >
+      <div className="relative w-full max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_1fr] items-center gap-16">
+
         {/* Left Content */}
-        <div className="flex-1 text-center md:text-left">
-          <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-violet-500/30 bg-violet-500/10 backdrop-blur-sm">
-            <span className="text-sm font-medium tracking-wider text-violet-400 uppercase">
+        <motion.div
+          className="text-center lg:text-left"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div
+            variants={fadeUp}
+            className="inline-block px-4 py-1.5 mb-6 rounded-full border border-violet-500/30 bg-violet-500/10"
+          >
+            <span className="text-xs font-bold tracking-[0.2em] text-violet-400 uppercase">
               Get to know me
             </span>
-          </div>
-          
-          <h2 className="text-5xl sm:text-6xl font-black mb-8 bg-gradient-to-r from-white via-cyan-400 to-violet-500 bg-clip-text text-transparent">
-            About Me
-          </h2>
+          </motion.div>
 
-          <p className="text-lg text-slate-400 leading-relaxed mb-8 max-w-2xl">
-            I’m <span className="font-bold text-white border-b-2 border-cyan-500/50">Akshat Saini</span>, 
-            a Computer Science graduate (B.Tech) with a strong interest in Full Stack and DevOps. 
-            Currently working as a <span className="text-violet-400 font-medium">DevOps intern</span>, 
-            I focus on building scalable applications and continuously learning to grow into a successful software engineer.
-          </p>
+          <motion.h2
+            variants={fadeUp}
+            custom={1}
+            className="text-5xl sm:text-6xl font-black tracking-tight mb-8"
+          >
+            About{' '}
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent">Me</span>
+          </motion.h2>
 
-          <div className="grid gap-6 mb-10">
-            <div className="group flex items-start gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-white/10">
-              <span className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-yellow-500/10 text-yellow-500 text-2xl group-hover:scale-110 transition-transform">
-                📜
-              </span>
-              <div>
-                <h4 className="text-white font-semibold">Certification</h4>
-                <p className="text-slate-400 text-sm mt-1">
-                  <strong>Red Hat Certified System Administrator (RHCSA)</strong> with hands-on experience in Linux administration.
-                </p>
-              </div>
-            </div>
+          <motion.p
+            variants={fadeUp}
+            custom={2}
+            className="text-lg text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0"
+          >
+            I’m <span className="font-semibold text-white">Akshat Saini</span>, a Computer Science graduate (B.Tech)
+            with a strong interest in Full Stack and DevOps. Currently working as a{' '}
+            <span className="text-violet-400 font-medium">Software Engineer</span>, I focus on building scalable
+            applications and continuously learning modern technologies.
+          </motion.p>
 
-            <div className="group flex items-start gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-white/10">
-              <span className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-green-500/10 text-green-500 text-2xl group-hover:scale-110 transition-transform">
-                🚀
-              </span>
-              <div>
-                <h4 className="text-white font-semibold">Focus Areas</h4>
-                <p className="text-slate-400 text-sm mt-1">
-                  Interested in <strong>DevOps, automation, containers,</strong> and building scalable, reliable systems.
-                </p>
-              </div>
-            </div>
-
-            <div className="group flex items-start gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-white/10">
-              <span className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-purple-500/10 text-purple-500 text-2xl group-hover:scale-110 transition-transform">
-                🛠️
-              </span>
-              <div>
-                <h4 className="text-white font-semibold">Specialization</h4>
-                <p className="text-slate-400 text-sm mt-1">
-                  Worked on projects involving <strong>DevOps and full stack</strong> development.
-                </p>
-              </div>
-            </div>
+          {/* Highlights */}
+          <div className="grid gap-4 mb-10 text-left" style={{ perspective: 1000 }}>
+            {highlights.map((h, i) => (
+              <motion.div
+                key={h.title}
+                variants={flipUp}
+                custom={i}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                style={{ transformOrigin: 'top center' }}
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-[#111113] border border-white/5 hover:border-white/10 transition-colors duration-300"
+              >
+                <span
+                  className={`flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-xl border ${h.tint} group-hover:scale-110 transition-transform duration-300`}
+                >
+                  {h.icon}
+                </span>
+                <div>
+                  <h4 className="text-white font-semibold">{h.title}</h4>
+                  <p className="text-slate-400 text-sm mt-1 leading-relaxed">{h.body}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          <div className="mt-8">
+          {/* Tech Stack */}
+          <motion.div variants={fadeUp} custom={6}>
             <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-slate-500 mb-5">
               Current Tech Stack
             </h3>
-
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              {[
-                'React.js', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Express', 'Git & GitHub', 'DevOps'
-              ].map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-[#16161a] border border-white/10 px-5 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all duration-300 cursor-default"
+            <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start">
+              {stack.map((tech, i) => (
+                <motion.span
+                  key={tech.name}
+                  variants={pop}
+                  custom={i}
+                  whileHover={{ y: -4, rotate: -2, transition: { duration: 0.2 } }}
+                  className="inline-flex items-center gap-2 bg-[#16161a] border border-white/10 pl-3 pr-4 py-2 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:border-cyan-500/40 transition-colors duration-300 cursor-default"
                 >
-                  {tech}
-                </span>
+                  <span className="text-base">{tech.icon}</span>
+                  {tech.name}
+                </motion.span>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Right Visual: Professional Code Card */}
-        <div
-          className="flex-1 flex justify-center md:justify-end"
-          data-aos="zoom-in"
+        {/* Right Visual: Animated Terminal */}
+        <motion.div
+          className="flex justify-center lg:justify-end"
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
         >
-          <div className="w-full max-w-sm rounded-2xl shadow-2xl bg-[#0d0d0f] text-left border border-white/10 relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-            
-            <div className="absolute top-0 left-0 w-full h-10 bg-white/5 flex items-center px-4 space-x-2 rounded-t-2xl border-b border-white/5">
-              <span className="w-3 h-3 bg-[#ff5f56] rounded-full" />
-              <span className="w-3 h-3 bg-[#ffbd2e] rounded-full" />
-              <span className="w-3 h-3 bg-[#27c93f] rounded-full" />
-              <span className="ml-4 text-[10px] uppercase tracking-widest text-slate-500 font-bold">developer-profile.js</span>
-            </div>
-
-            <div className="p-8 pt-14">
-              <pre className="text-sm font-mono leading-relaxed">
-                <code className="text-violet-400">const</code> <code className="text-cyan-400">akshat</code> = {'{'} <br />
-                &nbsp;&nbsp;<span className="text-slate-400">role:</span> <code className="text-yellow-200">"Full Stack Developer"</code>,<br />
-                &nbsp;&nbsp;<span className="text-slate-400">specialty:</span> <code className="text-yellow-200">"DevOps"</code>,<br />
-                &nbsp;&nbsp;<span className="text-slate-400">tech:</span> [<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<code className="text-emerald-400">"React"</code>, <code className="text-emerald-400">"Node"</code>,<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<code className="text-emerald-400">"Docker"</code>, <code className="text-emerald-400">"Linux"</code><br />
-                &nbsp;&nbsp;],<br />
-                &nbsp;&nbsp;<span className="text-slate-400">openToWork:</span> <code className="text-orange-400">true</code><br />
-                {'};'}
-              </pre>
-            </div>
-          </div>
-        </div>
+          <Tilt max={8} scale={1.01} glare rounded="rounded-2xl" className="w-full max-w-md">
+            <Terminal />
+          </Tilt>
+        </motion.div>
       </div>
     </section>
   );

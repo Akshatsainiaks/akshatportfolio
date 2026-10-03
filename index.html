@@ -1,108 +1,250 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <!-- Primary Page Title & SEO Meta Tags -->
-    <title>Akshat Saini | Software Engineer</title>
+    <!-- Primary SEO -->
+    <title>Akshat Saini – Software Engineer | Full Stack & DevOps | Creator of Srevox</title>
     <meta
       name="description"
-      content="Official portfolio of Akshat Saini, a Software Engineer specializing in React.js, Node.js, Kubernetes, Linux, and Cloud/DevOps architecture. Creator of Srevox."
+      content="Akshat Saini is a Software Engineer from Udaipur, India specialising in Full Stack development and DevOps — React, Node.js, Go, Docker, Kubernetes and Linux (RHCSA). Creator of Srevox, a self-hosted Kubernetes observability platform."
     />
     <meta
       name="keywords"
-      content="Akshat Saini, Akshat Saini portfolio, Akshatsainiaks, Software Engineer, Full Stack Developer, DevOps Engineer, React Developer, Node.js, Kubernetes, Srevox, Docker, Linux RHCSA, Techno India NJR, Udaipur developer"
+      content="Akshat Saini, Akshat Kumar Saini, Akshatsainiaks, Akshat Saini portfolio, Software Engineer, Full Stack Developer, DevOps Engineer, Srevox, Kubernetes observability, React developer, Node.js, Go, Docker, Kubernetes, RHCSA, Udaipur software engineer"
     />
     <meta name="author" content="Akshat Saini" />
+    <meta name="creator" content="Akshat Saini" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="theme-color" content="#0a0a0c" />
-    <link rel="canonical" href="https://akshatsaini.site/" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0c" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href="https://www.akshatsaini.site/" />
+    <link rel="alternate" type="text/plain" title="LLM summary" href="https://www.akshatsaini.site/llms.txt" />
+    <link rel="me" href="https://github.com/Akshatsainiaks" />
+    <link rel="me" href="https://www.linkedin.com/in/akshat-saini-0ba25924b/" />
+
+    <!-- Apply saved light/dark theme before first paint (prevents flash) -->
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.classList.add("light");
+        }
+      } catch (e) {}
+    </script>
 
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/svg+xml" href="/Akshat.svg" />
-    <link rel="alternate icon" type="image/svg+xml" href="/Akshat.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Open Graph (OG) / Facebook / LinkedIn Meta Tags -->
+    <!-- Open Graph / LinkedIn / Facebook -->
     <meta property="og:type" content="profile" />
-    <meta property="og:title" content="Akshat Saini | Software Engineer" />
+    <meta property="og:site_name" content="Akshat Saini" />
+    <meta property="og:title" content="Akshat Saini – Software Engineer | Full Stack & DevOps" />
     <meta
       property="og:description"
-      content="Explore the projects, experience, and certifications of Akshat Saini – Software Engineer specializing in Full Stack web apps, Kubernetes, DevOps, and scalable distributed systems."
+      content="Portfolio of Akshat Saini — Software Engineer building scalable full-stack apps and DevOps tooling. Creator of Srevox, a self-hosted Kubernetes observability & incident intelligence platform."
     />
-    <meta property="og:url" content="https://akshatsaini.site/" />
-    <meta property="og:site_name" content="Akshat Saini Portfolio" />
-    <meta property="og:image" content="/Hsection.jpeg" />
-    <meta property="og:image:alt" content="Akshat Saini - Software Engineer Portfolio" />
+    <meta property="og:url" content="https://www.akshatsaini.site/" />
+    <meta property="og:image" content="https://www.akshatsaini.site/og-image.png" />
+    <meta property="og:image:secure_url" content="https://www.akshatsaini.site/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Akshat Saini – Software Engineer, Full Stack & DevOps, creator of Srevox" />
     <meta property="og:locale" content="en_US" />
-
-    <!-- Profile Specific Meta Tags -->
     <meta property="profile:first_name" content="Akshat" />
     <meta property="profile:last_name" content="Saini" />
     <meta property="profile:username" content="Akshatsainiaks" />
 
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Akshat Saini | Software Engineer" />
+    <meta name="twitter:title" content="Akshat Saini – Software Engineer | Full Stack & DevOps" />
     <meta
       name="twitter:description"
-      content="Official portfolio of Akshat Saini – Software Engineer, Full Stack Developer &amp; DevOps enthusiast. Creator of Srevox."
+      content="Software Engineer building full-stack apps & DevOps tooling. Creator of Srevox — self-hosted Kubernetes observability."
     />
-    <meta name="twitter:image" content="/Hsection.jpeg" />
-    <meta name="twitter:creator" content="@Akshatsainiaks" />
+    <meta name="twitter:image" content="https://www.akshatsaini.site/og-image.png" />
+    <meta name="twitter:image:alt" content="Akshat Saini – Software Engineer portfolio" />
 
-    <!-- Google Structured Data / JSON-LD Schema Markup -->
+    <!-- Structured data (Google rich results + AI answer engines) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Akshat Saini",
-        "alternateName": ["Akshatsainiaks", "Akshat Kumar Saini"],
-        "url": "https://akshatsaini.site/",
-        "image": "https://akshatsaini.site/Hsection.jpeg",
-        "jobTitle": "Software Engineer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Hoicko Technologies Private Limited"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Techno India NJR Institute of Technology"
-        },
-        "hasCredential": [
+        "@graph": [
           {
-            "@type": "EducationalOccupationalCredential",
-            "name": "Red Hat Certified System Administrator (RHCSA)",
-            "credentialCategory": "certification"
+            "@type": "Person",
+            "@id": "https://www.akshatsaini.site/#person",
+            "name": "Akshat Saini",
+            "alternateName": ["Akshat Kumar Saini", "Akshatsainiaks"],
+            "url": "https://www.akshatsaini.site/",
+            "image": "https://www.akshatsaini.site/Hsection.jpeg",
+            "jobTitle": "Software Engineer",
+            "description": "Software Engineer from Udaipur, India focused on Full Stack development and DevOps. Creator of Srevox, a self-hosted Kubernetes observability platform.",
+            "email": "mailto:akshatsaini336@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Udaipur",
+              "addressRegion": "Rajasthan",
+              "addressCountry": "IN"
+            },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Techno India NJR Institute of Technology"
+            },
+            "hasCredential": [
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Red Hat Certified System Administrator (RHCSA)",
+                "credentialCategory": "certification",
+                "recognizedBy": { "@type": "Organization", "name": "Red Hat" }
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Foundations of Cybersecurity",
+                "credentialCategory": "certificate",
+                "recognizedBy": { "@type": "Organization", "name": "Google" }
+              }
+            ],
+            "knowsAbout": [
+              "Software Engineering", "Full Stack Development", "DevOps", "Kubernetes", "Docker", "Helm",
+              "Linux System Administration", "React.js", "Next.js", "Node.js", "Express.js", "Go",
+              "PostgreSQL", "MongoDB", "Redis", "AWS", "CI/CD Pipelines", "Observability"
+            ],
+            "sameAs": [
+              "https://github.com/Akshatsainiaks",
+              "https://www.linkedin.com/in/akshat-saini-0ba25924b/",
+              "https://hub.docker.com/u/akshatsaini08",
+              "https://srevox.in"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.akshatsaini.site/#website",
+            "url": "https://www.akshatsaini.site/",
+            "name": "Akshat Saini",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://www.akshatsaini.site/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://www.akshatsaini.site/#profile",
+            "url": "https://www.akshatsaini.site/",
+            "name": "Akshat Saini – Software Engineer Portfolio",
+            "isPartOf": { "@id": "https://www.akshatsaini.site/#website" },
+            "mainEntity": { "@id": "https://www.akshatsaini.site/#person" },
+            "dateModified": "2026-10-03"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://srevox.in/#software",
+            "name": "Srevox",
+            "url": "https://srevox.in",
+            "description": "Self-hosted Kubernetes observability and incident intelligence platform with real-time CrashLoopBackOff, OOMKilled and LivenessProbe detection, live pod log streaming and AI root-cause analysis (OpenAI, Anthropic or Ollama).",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Linux, Kubernetes",
+            "author": { "@id": "https://www.akshatsaini.site/#person" },
+            "creator": { "@id": "https://www.akshatsaini.site/#person" },
+            "screenshot": "https://www.akshatsaini.site/og-image.png"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://www.akshatsaini.site/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Who is Akshat Saini?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Akshat Saini (Akshat Kumar Saini) is a Software Engineer from Udaipur, Rajasthan, India, focused on Full Stack development and DevOps. He holds a B.Tech in Computer Science from Techno India NJR Institute of Technology and is a Red Hat Certified System Administrator (RHCSA)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Srevox?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Srevox is a self-hosted Kubernetes observability and incident intelligence platform built by Akshat Saini. It detects CrashLoopBackOff, OOMKilled and LivenessProbe failures in real time, streams live pod logs in the browser and runs AI root-cause analysis using OpenAI, Anthropic or Ollama. It is live at srevox.in."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What technologies does Akshat Saini work with?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Akshat works with React.js, Next.js, Node.js, Express, Go, PostgreSQL, MongoDB, Redis, Docker, Kubernetes, Helm, Linux (RHCSA), AWS, Nginx, Grafana and CI/CD pipelines."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Akshat Saini open to new opportunities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Akshat Saini is open to Software Engineer, Full Stack and DevOps roles, as well as freelance projects and collaborations."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I contact Akshat Saini?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can email Akshat Saini at akshatsaini336@gmail.com, connect on LinkedIn, or use the contact form on www.akshatsaini.site."
+                }
+              }
+            ]
           }
-        ],
-        "knowsAbout": [
-          "Full Stack Development",
-          "DevOps",
-          "Kubernetes",
-          "Docker",
-          "Linux System Administration",
-          "React.js",
-          "Node.js",
-          "Next.js",
-          "Go",
-          "PostgreSQL",
-          "MongoDB",
-          "Cloud Architecture",
-          "CI/CD Pipelines"
-        ],
-        "sameAs": [
-          "https://github.com/Akshatsainiaks",
-          "https://www.linkedin.com/in/akshat-saini-0ba25924b/",
-          "https://srevox.in"
         ]
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Crawlable content for bots and AI engines that don't run JavaScript (same content as the app) -->
+    <noscript>
+      <main>
+        <h1>Akshat Saini – Software Engineer (Full Stack &amp; DevOps)</h1>
+        <p>Akshat Saini is a Software Engineer from Udaipur, Rajasthan, India, focused on Full Stack development and DevOps. B.Tech in Computer Science (Techno India NJR Institute of Technology, CGPA 8.44) and Red Hat Certified System Administrator (RHCSA).</p>
+
+        <h2>Featured project: Srevox</h2>
+        <p>Srevox (<a href="https://srevox.in">srevox.in</a>) is a self-hosted Kubernetes observability and incident intelligence platform: real-time CrashLoopBackOff, OOMKilled and LivenessProbe detection, live pod log streaming in the browser, AI root-cause analysis with OpenAI, Anthropic or Ollama, and alerts via Slack, Teams and Email. Built with Next.js, Go, Kubernetes, Helm, PostgreSQL and Redis. 3,454+ Docker image pulls.</p>
+
+        <h2>Other projects</h2>
+        <ul>
+          <li>AI SaaS Web App – full-stack PERN application (React.js, Node.js, Express.js, PostgreSQL, Clerk)</li>
+          <li>Auth System – Redis sessions and ClickHouse analytics, containerised with Docker Compose on RHEL</li>
+          <li>Weather App – React, Vite, Tailwind CSS and the OpenWeatherMap API</li>
+          <li>Tic Tac Toe – HTML, CSS and JavaScript</li>
+        </ul>
+
+        <h2>Experience</h2>
+        <ul>
+          <li>DevOps Intern, Hoicko Technologies Private Limited (Sep 2025 – Dec 2025): Linux servers, Docker, CI/CD with Azure DevOps, Kubernetes</li>
+          <li>IBM – Nasscom Machine Learning Intern (Dec 2022 – Feb 2023): Python, NumPy, Pandas</li>
+        </ul>
+
+        <h2>Skills</h2>
+        <p>React.js, JavaScript, Tailwind CSS, Node.js, Express.js, Go, PostgreSQL, MongoDB, MySQL, Redis, REST APIs, JWT, Docker, Kubernetes, Linux (RHCSA), AWS, CI/CD, Nginx, Grafana, Git.</p>
+
+        <h2>Certifications</h2>
+        <ul>
+          <li>Red Hat Certified System Administrator (RHCSA) – Red Hat</li>
+          <li>Foundations of Cybersecurity – Google / Coursera</li>
+          <li>Introduction to SQL – Great Learning</li>
+          <li>Full Stack Development – Grras Institute</li>
+          <li>Machine Learning – IBM Nasscom</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:akshatsaini336@gmail.com">akshatsaini336@gmail.com</a> · <a href="https://github.com/Akshatsainiaks">GitHub</a> · <a href="https://www.linkedin.com/in/akshat-saini-0ba25924b/">LinkedIn</a></p>
+      </main>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

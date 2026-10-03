@@ -56,47 +56,130 @@
 
 
 // final new
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+
+const FIRST = "AKSHAT".split("");
+const LAST = "SAINI".split("");
+
+const MIN_TIME = 1600; // always show the intro at least this long
+const MAX_TIME = 4000; // never block the site longer than this
+const EASE = [0.76, 0, 0.24, 1];
 
 const PageLoader = ({ onFinish }) => {
+  const [progress, setProgress] = useState(0);
+  const reduceMotion = useReducedMotion();
+
+  // Progress eases toward 100 over MIN_TIME, but holds at 90
+  // until the page has actually finished loading (or MAX_TIME hits).
   useEffect(() => {
-    const timer = setTimeout(() => onFinish(), 1500);
-    return () => clearTimeout(timer);
+    const start = performance.now();
+    let loaded = document.readyState === "complete";
+    let frame;
+    let done;
+
+    const markLoaded = () => (loaded = true);
+    window.addEventListener("load", markLoaded);
+
+    const tick = (now) => {
+      const elapsed = now - start;
+      const t = Math.min(elapsed / MIN_TIME, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const ready = (loaded && t === 1) || elapsed >= MAX_TIME;
+      const value = ready ? 100 : Math.min(eased * 100, 90);
+
+      setProgress(Math.round(value));
+
+      if (ready) {
+        done = setTimeout(onFinish, 250);
+      } else {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+    frame = requestAnimationFrame(tick);
+
+    // Safety net in case animation frames are throttled
+    const fallback = setTimeout(onFinish, MAX_TIME + 500);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(done);
+      clearTimeout(fallback);
+      window.removeEventListener("load", markLoaded);
+    };
   }, [onFinish]);
+
+  const letter = (char, i, delayBase, color) => (
+    <span key={i} className="inline-block overflow-hidden align-bottom">
+      <motion.span
+        className="inline-block"
+        style={color ? { color } : undefined}
+        initial={reduceMotion ? { opacity: 0 } : { y: "110%" }}
+        animate={reduceMotion ? { opacity: 1 } : { y: "0%" }}
+        transition={{ duration: 0.7, ease: EASE, delay: delayBase + i * 0.05 }}
+      >
+        {char}
+      </motion.span>
+    </span>
+  );
 
   return (
     <motion.div
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a0c]"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0a0a0c] text-white overflow-hidden select-none"
+      exit={reduceMotion ? { opacity: 0 } : { y: "-100%" }}
+      transition={{ duration: reduceMotion ? 0.3 : 0.85, ease: EASE }}
+      role="status"
+      aria-label="Loading portfolio"
     >
-      <div className="relative">
-        {/* Breathing background glow */}
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-cyan-500 rounded-full blur-3xl"
-        />
+      {/* Ambient glows (same as the hero) */}
+      <div className="absolute top-1/3 left-1/3 w-[420px] h-[420px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/3 w-[420px] h-[420px] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="relative text-3xl font-black tracking-tighter text-white"
+      <div className="relative w-full flex flex-col items-center px-6">
+        {/* Name reveal */}
+        <h1 className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 text-4xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-none">
+          <span className="flex">{FIRST.map((c, i) => letter(c, i, 0.1))}</span>
+          {/* per-letter cyan → violet (bg-clip-text breaks on moving letters) */}
+          <span className="flex">
+            {LAST.map((c, i) =>
+              letter(
+                c,
+                i,
+                0.35,
+                `color-mix(in oklab, var(--color-violet-500) ${Math.round((i / (LAST.length - 1)) * 100)}%, var(--color-cyan-400))`
+              )
+            )}
+          </span>
+        </h1>
+
+        {/* Role */}
+        <motion.p
+          className="mt-6 text-[11px] sm:text-xs font-bold uppercase tracking-[0.4em] text-slate-500"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
         >
-          A<span className="text-cyan-400">.</span>S
-        </motion.h1>
-      </div>
-      
-      {/* Tiny bottom indicator */}
-      <div className="absolute bottom-12 flex gap-1">
-        {[0, 0.1, 0.2].map((d) => (
-          <motion.div
-            key={d}
-            animate={{ y: [0, -5, 0] }}
-            transition={{ duration: 0.6, repeat: Infinity, delay: d }}
-            className="w-1 h-1 bg-violet-500 rounded-full"
+          Software Engineer
+        </motion.p>
+
+        {/* Progress line */}
+        <div className="mt-10 w-48 sm:w-64 h-[2px] rounded-full bg-white/10 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-500"
+            style={{ width: `${progress}%` }}
           />
-        ))}
+        </div>
+      </div>
+
+      {/* Counter */}
+      <div className="absolute bottom-8 right-6 sm:right-10 font-mono text-sm sm:text-base font-bold tabular-nums text-slate-500">
+        {String(progress).padStart(3, "0")}
+        <span className="text-cyan-400">%</span>
+      </div>
+
+      {/* Monogram */}
+      <div className="absolute bottom-8 left-6 sm:left-10 text-sm font-black tracking-tighter text-slate-500">
+        A<span className="text-cyan-400">.</span>S
       </div>
     </motion.div>
   );

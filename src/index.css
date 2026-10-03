@@ -21,3 +21,54 @@ html, body {
 
 
 
+/* ============================================================
+   LIGHT MODE
+   Dark is the default. Adding `.light` to <html> (see ThemeToggle)
+   remaps the dark palette used across sections to a light one.
+   ============================================================ */
+
+/* `dark:` utilities apply whenever light mode is NOT active */
+@custom-variant dark (&:where(html:not(.light) *));
+
+html.light {
+  color-scheme: light;
+
+  /* invert neutrals: white text -> near-black, black -> white */
+  --color-white: #0a0a0c;
+  --color-black: #ffffff;
+  --color-slate-50: oklch(12.9% 0.042 264.695);
+  --color-slate-100: oklch(20.8% 0.042 265.755);
+  --color-slate-200: oklch(27.9% 0.041 260.031);
+  --color-slate-300: oklch(37.2% 0.044 257.287);
+  --color-slate-400: oklch(44.6% 0.043 257.281);
+  --color-slate-600: oklch(70.4% 0.04 256.788);
+  --color-slate-700: oklch(86.9% 0.022 252.894);
+  --color-slate-800: oklch(92.9% 0.013 255.508);
+  --color-slate-900: oklch(96.8% 0.007 247.896);
+  --color-slate-950: oklch(98.4% 0.003 247.858);
+
+  /* deepen accents so they stay readable on white */
+  --color-cyan-400: oklch(60.9% 0.126 221.723);
+  --color-violet-400: oklch(54.1% 0.281 293.009);
+  --color-emerald-400: oklch(59.6% 0.145 163.225);
+  --color-yellow-200: oklch(55.4% 0.135 66.442);
+  --color-amber-300: oklch(55.5% 0.163 48.998);
+}
+
+/* hardcoded dark surfaces -> light surfaces */
+html.light .bg-\[\#0a0a0c\] { background-color: #f8fafc; }
+html.light .bg-\[\#070708\],
+html.light .bg-\[\#070a12\] { background-color: #f1f5f9; }
+html.light .bg-\[\#111113\],
+html.light .bg-\[\#111114\],
+html.light .bg-\[\#0d0d0f\],
+html.light .bg-\[\#16161a\] { background-color: #ffffff; }
+html.light .bg-\[\#0a0a0c\]\/80 { background-color: rgb(248 250 252 / 0.8); }
+html.light .bg-\[\#0a0a0ce0\] { background-color: rgb(248 250 252 / 0.88); }
+html.light .bg-\[\#0a0a0ca0\] { background-color: rgb(248 250 252 / 0.63); }
+html.light .bg-\[\#0d0d0f\]\/95 { background-color: rgb(255 255 255 / 0.95); }
+html.light .bg-\[\#111113\]\/80 { background-color: rgb(255 255 255 / 0.8); }
+html.light body { background-color: #f8fafc; }
+
+/* keep white text on coloured gradient badges/buttons (logo, mobile resume button) */
+html.light [class*="bg-gradient-to-"].text-white { color: #fff; }

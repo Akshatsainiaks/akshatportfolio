@@ -1,0 +1,45 @@
+# Akshat Saini
+
+> Akshat Saini (Akshat Kumar Saini) is a Software Engineer from Udaipur, Rajasthan, India, focused on Full Stack development and DevOps. He is the creator of Srevox, a self-hosted Kubernetes observability and incident intelligence platform. Red Hat Certified System Administrator (RHCSA). Open to Software Engineer, Full Stack and DevOps opportunities.
+
+## About
+- Role: Software Engineer (Full Stack & DevOps)
+- Location: Udaipur, Rajasthan, India
+- Education: B.Tech in Computer Science, Techno India NJR Institute of Technology (2022–2026, CGPA 8.44)
+- Website: https://www.akshatsaini.site/
+- Email: akshatsaini336@gmail.com
+- GitHub: https://github.com/Akshatsainiaks
+- LinkedIn: https://www.linkedin.com/in/akshat-saini-0ba25924b/
+- Docker Hub: https://hub.docker.com/u/akshatsaini08
+
+## Featured project: Srevox
+- Website: https://srevox.in — Docs: https://docs.srevox.in
+- Self-hosted Kubernetes observability & incident intelligence platform ("100% Self-Hosted • Zero Data Leaks")
+- Real-time CrashLoopBackOff, OOMKilled and LivenessProbe detection
+- Live pod log streaming in the browser
+- AI root-cause analysis using OpenAI, Anthropic or Ollama
+- Alerts via Slack, Teams and Email; service-owner routing and audit logging
+- Stack: Next.js, Go, Kubernetes, Helm, PostgreSQL, Redis
+- 3,454+ Docker image pulls; one-command install via setup script
+
+## Other projects
+- AI SaaS Web App — full-stack PERN app (React.js, Node.js, Express.js, PostgreSQL, Clerk): https://ai-project-brown-gamma.vercel.app/
+- Auth System — Redis sessions + ClickHouse analytics, Docker Compose on RHEL
+- Weather App — React, Vite, Tailwind CSS, OpenWeatherMap API: https://weather-app-akshat-project.vercel.app/
+- Tic Tac Toe — HTML, CSS, JavaScript: https://tic-tac-toe-akshat-project.vercel.app/
+
+## Experience
+- DevOps Intern, Hoicko Technologies Private Limited (Sep 2025 – Dec 2025): Linux server administration, Docker images, CI/CD pipelines with Azure DevOps, Kubernetes, log monitoring
+- IBM – Nasscom Machine Learning Intern (Dec 2022 – Feb 2023): Python, NumPy, Pandas
+
+## Skills
+- Frontend: React.js, JavaScript, Tailwind CSS, HTML5, CSS3, Vite
+- Backend & databases: Node.js, Go, Express.js, PostgreSQL, MongoDB, MySQL, Redis, REST APIs, JWT
+- DevOps & cloud: Kubernetes, Docker, Linux (RHCSA), AWS, CI/CD, Nginx, Grafana, Git & GitHub
+
+## Certifications
+- Red Hat Certified System Administrator (RHCSA) — Red Hat, Feb 2024
+- Foundations of Cybersecurity — Google / Coursera, Feb 2024
+- Introduction to SQL — Great Learning, Mar 2024
+- Full Stack Development — Grras Institute, Apr 2024
+- Machine Learning — IBM Nasscom, Feb 2023

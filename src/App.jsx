@@ -73,7 +73,8 @@
 // export default App;
 
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -87,6 +88,7 @@ import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import Experience from "./sections/Experience";
+import FAQ from "./sections/FAQ";
 
 import PageLoader from "./components/PageLoader";
 import { Analytics } from "@vercel/analytics/react";
@@ -97,24 +99,21 @@ function App() {
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
-
-    // ⛔ Stop scrolling when loader is active
-    document.body.style.overflow = "hidden";
-
-    const timer = setTimeout(() => {
-      setLoading(false);
-
-      // ✅ Restore scrolling after loader finishes
-      document.body.style.overflow = "auto";
-    }, 1800);
-
-    return () => clearTimeout(timer);
   }, []);
+
+  // ⛔ Stop scrolling while loader is active, ✅ restore after
+  useEffect(() => {
+    document.body.style.overflow = loading ? "hidden" : "auto";
+  }, [loading]);
+
+  const finishLoading = useCallback(() => setLoading(false), []);
 
   return (
     <>
-      {/* Loader */}
-      {loading && <PageLoader onFinish={() => setLoading(false)} />}
+      {/* Loader (slides up over the site when done) */}
+      <AnimatePresence>
+        {loading && <PageLoader key="loader" onFinish={finishLoading} />}
+      </AnimatePresence>
 
       {/* Actual Website */}
       {!loading && (
@@ -126,6 +125,7 @@ function App() {
           <Experience />
           <Projects />
           <Certifications />
+          <FAQ />
           <Contact />
           <Footer />
           <BackToTop />
