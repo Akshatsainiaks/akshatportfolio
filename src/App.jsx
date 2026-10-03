@@ -88,7 +88,6 @@ import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import Experience from "./sections/Experience";
-import FAQ from "./sections/FAQ";
 
 import PageLoader from "./components/PageLoader";
 import { Analytics } from "@vercel/analytics/react";
@@ -125,7 +124,6 @@ function App() {
           <Experience />
           <Projects />
           <Certifications />
-          <FAQ />
           <Contact />
           <Footer />
           <BackToTop />
